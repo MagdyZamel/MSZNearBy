@@ -1,0 +1,16 @@
+//
+//  Debug.xcconfig
+//  MSZNearBy
+//
+//  Created by MSZ on 12/5/19.
+//  Copyright © 2019 MSZ. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+TIMEOUT_INTERVAL       = 10
+PROTOCOL               = https
+WEB_SOCKET_BASE_DOMAIN = XYZ
+PORT                   = 443
+BASE_DOMAIN            = XYZ
