@@ -33,6 +33,10 @@
 		2A5EB11B239AAE1A006EF59D /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB11A239AAE1A006EF59D /* NetworkManagerProtocol.swift */; };
 		2A5EB11F239AD303006EF59D /* APIManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB11E239AD303006EF59D /* APIManagerError.swift */; };
 		2A5EB121239AD31C006EF59D /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB120239AD31C006EF59D /* ErrorModel.swift */; };
+		2A693EF5239DA32C00F442A9 /* VenuePhotoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693EF1239DA32C00F442A9 /* VenuePhotoEntity+CoreDataProperties.swift */; };
+		2A693EF6239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693EF2239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift */; };
+		2A693EF7239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693EF3239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift */; };
+		2A693EF8239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693EF4239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift */; };
 		2A7FDEEE2399408600E2D641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FDEED2399408600E2D641 /* AppDelegate.swift */; };
 		2A7FDEF52399408600E2D641 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FDEF32399408600E2D641 /* Main.storyboard */; };
 		2A7FDEF72399408800E2D641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FDEF62399408800E2D641 /* Assets.xcassets */; };
@@ -40,12 +44,23 @@
 		2A7FDF1623994AB900E2D641 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FDF1323994AB900E2D641 /* Cartfile */; };
 		2A7FDF1723994AB900E2D641 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FDF1423994AB900E2D641 /* .swiftlint.yml */; };
 		2A7FDF1823994AB900E2D641 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FDF1523994AB900E2D641 /* Cartfile.resolved */; };
+		2A85D9ED239D38EC0040DCC6 /* NearBYModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A85D9EB239D38EC0040DCC6 /* NearBYModel.xcdatamodeld */; };
+		2ACED78D239D25C0006B8312 /* APIVenueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED788239D25BF006B8312 /* APIVenueModel.swift */; };
+		2ACED78E239D25C0006B8312 /* APIItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED789239D25BF006B8312 /* APIItemModel.swift */; };
+		2ACED78F239D25C0006B8312 /* APIGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED78A239D25BF006B8312 /* APIGroupModel.swift */; };
+		2ACED790239D25C0006B8312 /* APIExploreResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED78B239D25C0006B8312 /* APIExploreResponseModel.swift */; };
+		2ACED791239D25C0006B8312 /* APILocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED78C239D25C0006B8312 /* APILocationModel.swift */; };
+		2ACED79E239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED79B239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift */; };
+		2ACED79F239D2A8D006B8312 /* APIPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED79C239D2A8D006B8312 /* APIPhotosModel.swift */; };
+		2ACED7A0239D2A8D006B8312 /* APIPhotoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED79D239D2A8D006B8312 /* APIPhotoItemModel.swift */; };
 		2AFC76E0239AD7C700B5C210 /* APIRequestProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76DF239AD7C700B5C210 /* APIRequestProviderError.swift */; };
 		2AFC76E2239AD7F600B5C210 /* InternetManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76E1239AD7F600B5C210 /* InternetManagerProtocol.swift */; };
 		2AFC76E5239ADF6700B5C210 /* ExploreVenuesAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76E4239ADF6700B5C210 /* ExploreVenuesAPIRequest.swift */; };
 		2AFC76E7239AEEC100B5C210 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76E6239AEEC100B5C210 /* Date+Extension.swift */; };
 		2AFC76E9239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76E8239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift */; };
 		2AFC76ED239B06B000B5C210 /* Singletons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76EC239B06B000B5C210 /* Singletons.swift */; };
+		2AFC76F1239BEB3D00B5C210 /* DataBaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76F0239BEB3D00B5C210 /* DataBaseProtocol.swift */; };
+		2AFC76F3239BEBD600B5C210 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76F2239BEBD600B5C210 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +104,10 @@
 		2A5EB11A239AAE1A006EF59D /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		2A5EB11E239AD303006EF59D /* APIManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerError.swift; sourceTree = "<group>"; };
 		2A5EB120239AD31C006EF59D /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		2A693EF1239DA32C00F442A9 /* VenuePhotoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VenuePhotoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2A693EF2239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VenueEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2A693EF3239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VenueEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2A693EF4239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VenuePhotoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2A7FDEEA2399408600E2D641 /* MSZNearBy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSZNearBy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7FDEED2399408600E2D641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A7FDEF42399408600E2D641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,12 +116,23 @@
 		2A7FDF1323994AB900E2D641 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		2A7FDF1423994AB900E2D641 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		2A7FDF1523994AB900E2D641 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = SOURCE_ROOT; };
+		2A85D9EC239D38EC0040DCC6 /* NearBYModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearBYModel.xcdatamodel; sourceTree = "<group>"; };
+		2ACED788239D25BF006B8312 /* APIVenueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIVenueModel.swift; sourceTree = "<group>"; };
+		2ACED789239D25BF006B8312 /* APIItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIItemModel.swift; sourceTree = "<group>"; };
+		2ACED78A239D25BF006B8312 /* APIGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGroupModel.swift; sourceTree = "<group>"; };
+		2ACED78B239D25C0006B8312 /* APIExploreResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIExploreResponseModel.swift; sourceTree = "<group>"; };
+		2ACED78C239D25C0006B8312 /* APILocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILocationModel.swift; sourceTree = "<group>"; };
+		2ACED79B239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIVenuePhotosResponseModel.swift; sourceTree = "<group>"; };
+		2ACED79C239D2A8D006B8312 /* APIPhotosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPhotosModel.swift; sourceTree = "<group>"; };
+		2ACED79D239D2A8D006B8312 /* APIPhotoItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPhotoItemModel.swift; sourceTree = "<group>"; };
 		2AFC76DF239AD7C700B5C210 /* APIRequestProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestProviderError.swift; sourceTree = "<group>"; };
 		2AFC76E1239AD7F600B5C210 /* InternetManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetManagerProtocol.swift; sourceTree = "<group>"; };
 		2AFC76E4239ADF6700B5C210 /* ExploreVenuesAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVenuesAPIRequest.swift; sourceTree = "<group>"; };
 		2AFC76E6239AEEC100B5C210 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2AFC76E8239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotosAPIRequest.swift; sourceTree = "<group>"; };
 		2AFC76EC239B06B000B5C210 /* Singletons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singletons.swift; sourceTree = "<group>"; };
+		2AFC76F0239BEB3D00B5C210 /* DataBaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseProtocol.swift; sourceTree = "<group>"; };
+		2AFC76F2239BEBD600B5C210 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +191,8 @@
 			children = (
 				2AFC76EB239B06A700B5C210 /* Utiltlites */,
 				2A5EB0F8239979ED006EF59D /* Architecture */,
-				2AFC76E3239ADF5300B5C210 /* APIRequests */,
+				2ACED7A1239D2E18006B8312 /* CoreData */,
+				2AFC76E3239ADF5300B5C210 /* API */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -252,6 +283,15 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		2A693EF0239DA32C00F442A9 /* Auto Generated */ = {
+			isa = PBXGroup;
+			children = (
+				2A693EF1239DA32C00F442A9 /* VenuePhotoEntity+CoreDataProperties.swift */,
+				2A693EF2239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift */,
+			);
+			path = "Auto Generated";
+			sourceTree = "<group>";
+		};
 		2A7FDEE12399408600E2D641 = {
 			isa = PBXGroup;
 			children = (
@@ -332,13 +372,46 @@
 			path = "AppDelegate+Delegates";
 			sourceTree = "<group>";
 		};
-		2AFC76E3239ADF5300B5C210 /* APIRequests */ = {
+		2ACED787239D22CD006B8312 /* Explore API */ = {
 			isa = PBXGroup;
 			children = (
-				2AFC76E4239ADF6700B5C210 /* ExploreVenuesAPIRequest.swift */,
-				2AFC76E8239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift */,
+				2ACED78B239D25C0006B8312 /* APIExploreResponseModel.swift */,
+				2ACED78A239D25BF006B8312 /* APIGroupModel.swift */,
+				2ACED789239D25BF006B8312 /* APIItemModel.swift */,
+				2ACED78C239D25C0006B8312 /* APILocationModel.swift */,
+				2ACED788239D25BF006B8312 /* APIVenueModel.swift */,
 			);
-			path = APIRequests;
+			path = "Explore API";
+			sourceTree = "<group>";
+		};
+		2ACED792239D27F8006B8312 /* Photo API */ = {
+			isa = PBXGroup;
+			children = (
+				2ACED79D239D2A8D006B8312 /* APIPhotoItemModel.swift */,
+				2ACED79C239D2A8D006B8312 /* APIPhotosModel.swift */,
+				2ACED79B239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift */,
+			);
+			path = "Photo API";
+			sourceTree = "<group>";
+		};
+		2ACED7A1239D2E18006B8312 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2A85D9EB239D38EC0040DCC6 /* NearBYModel.xcdatamodeld */,
+				2A693EF0239DA32C00F442A9 /* Auto Generated */,
+				2A693EF3239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift */,
+				2A693EF4239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2AFC76E3239ADF5300B5C210 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC76F8239CF9F500B5C210 /* API Models */,
+				2AFC76F7239CF9DA00B5C210 /* API Requests */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		2AFC76EA239B028500B5C210 /* Shell */ = {
@@ -361,6 +434,8 @@
 		2AFC76EE239B06D600B5C210 /* DataBase Layer */ = {
 			isa = PBXGroup;
 			children = (
+				2AFC76F0239BEB3D00B5C210 /* DataBaseProtocol.swift */,
+				2AFC76F2239BEBD600B5C210 /* CoreDataManager.swift */,
 			);
 			path = "DataBase Layer";
 			sourceTree = "<group>";
@@ -370,6 +445,24 @@
 			children = (
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2AFC76F7239CF9DA00B5C210 /* API Requests */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC76E4239ADF6700B5C210 /* ExploreVenuesAPIRequest.swift */,
+				2AFC76E8239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift */,
+			);
+			path = "API Requests";
+			sourceTree = "<group>";
+		};
+		2AFC76F8239CF9F500B5C210 /* API Models */ = {
+			isa = PBXGroup;
+			children = (
+				2ACED792239D27F8006B8312 /* Photo API */,
+				2ACED787239D22CD006B8312 /* Explore API */,
+			);
+			path = "API Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,18 +563,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ACED79F239D2A8D006B8312 /* APIPhotosModel.swift in Sources */,
 				2A5EB103239A938D006EF59D /* Reachability.swift in Sources */,
+				2A693EF7239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift in Sources */,
+				2A85D9ED239D38EC0040DCC6 /* NearBYModel.xcdatamodeld in Sources */,
+				2ACED791239D25C0006B8312 /* APILocationModel.swift in Sources */,
+				2ACED7A0239D2A8D006B8312 /* APIPhotoItemModel.swift in Sources */,
 				2AFC76E0239AD7C700B5C210 /* APIRequestProviderError.swift in Sources */,
 				2A5EB0FD23997D77006EF59D /* InternetManager.swift in Sources */,
 				2AFC76E5239ADF6700B5C210 /* ExploreVenuesAPIRequest.swift in Sources */,
+				2A693EF8239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift in Sources */,
+				2ACED78E239D25C0006B8312 /* APIItemModel.swift in Sources */,
 				2A5EB11B239AAE1A006EF59D /* NetworkManagerProtocol.swift in Sources */,
 				2AFC76E7239AEEC100B5C210 /* Date+Extension.swift in Sources */,
+				2A693EF5239DA32C00F442A9 /* VenuePhotoEntity+CoreDataProperties.swift in Sources */,
+				2AFC76F3239BEBD600B5C210 /* CoreDataManager.swift in Sources */,
+				2AFC76F1239BEB3D00B5C210 /* DataBaseProtocol.swift in Sources */,
+				2ACED790239D25C0006B8312 /* APIExploreResponseModel.swift in Sources */,
 				2A5EB0F4239961CA006EF59D /* PlistKey .swift in Sources */,
+				2ACED78F239D25C0006B8312 /* APIGroupModel.swift in Sources */,
+				2ACED79E239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift in Sources */,
 				2A5EB106239A9DFC006EF59D /* APIRequestProtocol.swift in Sources */,
 				2A5EB113239AA14E006EF59D /* String+Extension.swift in Sources */,
 				2A5EB121239AD31C006EF59D /* ErrorModel.swift in Sources */,
 				2AFC76E2239AD7F600B5C210 /* InternetManagerProtocol.swift in Sources */,
 				2A5EB11F239AD303006EF59D /* APIManagerError.swift in Sources */,
+				2A693EF6239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift in Sources */,
 				2A5EB108239A9E32006EF59D /* BaseAPIRequest.swift in Sources */,
 				2A5EB10A239A9E76006EF59D /* APIAuthorization.swift in Sources */,
 				2A5EB10C239AA0A2006EF59D /* APIRequestProvider.swift in Sources */,
@@ -491,6 +598,7 @@
 				2A5EB119239AA2AD006EF59D /* APIManager.swift in Sources */,
 				2AFC76E9239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift in Sources */,
 				2A5EB0CE23995D4B006EF59D /* AppConfigurator.swift in Sources */,
+				2ACED78D239D25C0006B8312 /* APIVenueModel.swift in Sources */,
 				2A7FDEEE2399408600E2D641 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +730,19 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A85D9EB239D38EC0040DCC6 /* NearBYModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A85D9EC239D38EC0040DCC6 /* NearBYModel.xcdatamodel */,
+			);
+			currentVersion = 2A85D9EC239D38EC0040DCC6 /* NearBYModel.xcdatamodel */;
+			path = NearBYModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2A7FDEE22399408600E2D641 /* Project object */;
 }

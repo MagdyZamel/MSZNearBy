@@ -12,4 +12,5 @@ enum Singletons {
     static let internetManager = InternetConnectionManager()
     static let apiRequestProvider = APIRequestProvider(internetManager: internetManager)
     static let apiManager = APIManager()
+    static let coreDataStackManager = CoreDataStackManager(containerName: "NearBYModel")
 }

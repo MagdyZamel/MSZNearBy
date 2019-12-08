@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Venue" representedClassName="VenueEntity" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="location" attributeType="String"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="venueId" attributeType="String"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Venue" inverseName="venue" inverseEntity="Venue"/>
+    </entity>
+    <entity name="VenuePhoto" representedClassName="VenuePhotoEntity" syncable="YES">
+        <attribute name="height" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="image" optional="YES" attributeType="Binary" storedInTruthFile="YES"/>
+        <attribute name="photoId" optional="YES" attributeType="String"/>
+        <attribute name="prefix" attributeType="String"/>
+        <attribute name="suffix" attributeType="String"/>
+        <attribute name="width" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="photo" maxCount="1" deletionRule="Cascade" destinationEntity="VenuePhoto" inverseName="photo" inverseEntity="VenuePhoto"/>
+    </entity>
+    <elements>
+        <element name="Venue" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="VenuePhoto" positionX="-54" positionY="-9" width="128" height="148"/>
+    </elements>
+</model>
