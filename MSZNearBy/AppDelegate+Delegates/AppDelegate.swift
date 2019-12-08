@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for delegate in appDelegates {
             _ = delegate.application?(application, didFinishLaunchingWithOptions: launchOptions)
         }
+
         return true
     }
 

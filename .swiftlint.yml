@@ -5,3 +5,4 @@ disabled_rules: # rule identifiers to exclude from running
 excluded: # paths to ignore during linting. Takes precedence over `included`.
 - Carthage
 - MSZNearBy/Core/Architecture/Network Layer/Internet Manager/Reachability/Reachability.swift
+- MSZNearBy/Core/CoreData/Auto Generated
