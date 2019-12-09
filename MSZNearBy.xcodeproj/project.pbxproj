@@ -37,6 +37,10 @@
 		2A693EF6239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693EF2239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift */; };
 		2A693EF7239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693EF3239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift */; };
 		2A693EF8239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693EF4239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift */; };
+		2A693F36239DC24100F442A9 /* LocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693F35239DC24100F442A9 /* LocationManagerProtocol.swift */; };
+		2A693F3A239DC35B00F442A9 /* LocationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693F39239DC35B00F442A9 /* LocationStatus.swift */; };
+		2A693F3D239DC42F00F442A9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693F3C239DC42F00F442A9 /* LocationManager.swift */; };
+		2A693F3F239DC5E900F442A9 /* LocationManger + CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A693F3E239DC5E900F442A9 /* LocationManger + CLLocationManagerDelegate.swift */; };
 		2A7FDEEE2399408600E2D641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FDEED2399408600E2D641 /* AppDelegate.swift */; };
 		2A7FDEF52399408600E2D641 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FDEF32399408600E2D641 /* Main.storyboard */; };
 		2A7FDEF72399408800E2D641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FDEF62399408800E2D641 /* Assets.xcassets */; };
@@ -108,6 +112,10 @@
 		2A693EF2239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VenueEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2A693EF3239DA32C00F442A9 /* VenueEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VenueEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2A693EF4239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VenuePhotoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2A693F35239DC24100F442A9 /* LocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerProtocol.swift; sourceTree = "<group>"; };
+		2A693F39239DC35B00F442A9 /* LocationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatus.swift; sourceTree = "<group>"; };
+		2A693F3C239DC42F00F442A9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2A693F3E239DC5E900F442A9 /* LocationManger + CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationManger + CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
 		2A7FDEEA2399408600E2D641 /* MSZNearBy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSZNearBy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7FDEED2399408600E2D641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A7FDEF42399408600E2D641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -189,6 +197,7 @@
 		2A5EB0F7239979E6006EF59D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				2A693F32239DBDD300F442A9 /* Location services */,
 				2AFC76EB239B06A700B5C210 /* Utiltlites */,
 				2A5EB0F8239979ED006EF59D /* Architecture */,
 				2ACED7A1239D2E18006B8312 /* CoreData */,
@@ -200,6 +209,7 @@
 		2A5EB0F8239979ED006EF59D /* Architecture */ = {
 			isa = PBXGroup;
 			children = (
+				2A693F2A239DBCF100F442A9 /* UseCase */,
 				2AFC76EE239B06D600B5C210 /* DataBase Layer */,
 				2A5EB0F923997CCB006EF59D /* Network Layer */,
 			);
@@ -290,6 +300,32 @@
 				2A693EF2239DA32C00F442A9 /* VenueEntity+CoreDataProperties.swift */,
 			);
 			path = "Auto Generated";
+			sourceTree = "<group>";
+		};
+		2A693F2A239DBCF100F442A9 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		2A693F32239DBDD300F442A9 /* Location services */ = {
+			isa = PBXGroup;
+			children = (
+				2A693F35239DC24100F442A9 /* LocationManagerProtocol.swift */,
+				2A693F3B239DC38200F442A9 /* Location Manager */,
+			);
+			path = "Location services";
+			sourceTree = "<group>";
+		};
+		2A693F3B239DC38200F442A9 /* Location Manager */ = {
+			isa = PBXGroup;
+			children = (
+				2A693F3C239DC42F00F442A9 /* LocationManager.swift */,
+				2A693F3E239DC5E900F442A9 /* LocationManger + CLLocationManagerDelegate.swift */,
+				2A693F39239DC35B00F442A9 /* LocationStatus.swift */,
+			);
+			path = "Location Manager";
 			sourceTree = "<group>";
 		};
 		2A7FDEE12399408600E2D641 = {
@@ -578,11 +614,14 @@
 				2AFC76E7239AEEC100B5C210 /* Date+Extension.swift in Sources */,
 				2A693EF5239DA32C00F442A9 /* VenuePhotoEntity+CoreDataProperties.swift in Sources */,
 				2AFC76F3239BEBD600B5C210 /* CoreDataManager.swift in Sources */,
+				2A693F3D239DC42F00F442A9 /* LocationManager.swift in Sources */,
 				2AFC76F1239BEB3D00B5C210 /* DataBaseProtocol.swift in Sources */,
 				2ACED790239D25C0006B8312 /* APIExploreResponseModel.swift in Sources */,
 				2A5EB0F4239961CA006EF59D /* PlistKey .swift in Sources */,
+				2A693F3A239DC35B00F442A9 /* LocationStatus.swift in Sources */,
 				2ACED78F239D25C0006B8312 /* APIGroupModel.swift in Sources */,
 				2ACED79E239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift in Sources */,
+				2A693F3F239DC5E900F442A9 /* LocationManger + CLLocationManagerDelegate.swift in Sources */,
 				2A5EB106239A9DFC006EF59D /* APIRequestProtocol.swift in Sources */,
 				2A5EB113239AA14E006EF59D /* String+Extension.swift in Sources */,
 				2A5EB121239AD31C006EF59D /* ErrorModel.swift in Sources */,
@@ -593,6 +632,7 @@
 				2A5EB10A239A9E76006EF59D /* APIAuthorization.swift in Sources */,
 				2A5EB10C239AA0A2006EF59D /* APIRequestProvider.swift in Sources */,
 				2A5EB0F6239961ED006EF59D /* Environment.swift in Sources */,
+				2A693F36239DC24100F442A9 /* LocationManagerProtocol.swift in Sources */,
 				2A5EB116239AA220006EF59D /* APIRequestProviderProtocols.swift in Sources */,
 				2AFC76ED239B06B000B5C210 /* Singletons.swift in Sources */,
 				2A5EB119239AA2AD006EF59D /* APIManager.swift in Sources */,
