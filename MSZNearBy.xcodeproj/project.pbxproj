@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A5DE53D239DCC0B00F7ACF0 /* BaseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE53C239DCC0B00F7ACF0 /* BaseUseCase.swift */; };
 		2A5EB0CE23995D4B006EF59D /* AppConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB0CD23995D4B006EF59D /* AppConfigurator.swift */; };
 		2A5EB0D923995F10006EF59D /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */; };
 		2A5EB0DA23995F10006EF59D /* CocoaDebug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -86,6 +87,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A5DE53C239DCC0B00F7ACF0 /* BaseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUseCase.swift; sourceTree = "<group>"; };
 		2A5EB0CD23995D4B006EF59D /* AppConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurator.swift; sourceTree = "<group>"; };
 		2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaDebug.framework; sourceTree = "<group>"; };
 		2A5EB0D023995D98006EF59D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
@@ -159,6 +161,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A5DE53E239DD5B200F7ACF0 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		2A5EB0E423995F6E006EF59D /* Config Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +218,7 @@
 		2A5EB0F8239979ED006EF59D /* Architecture */ = {
 			isa = PBXGroup;
 			children = (
+				2A5DE53E239DD5B200F7ACF0 /* Repository */,
 				2A693F2A239DBCF100F442A9 /* UseCase */,
 				2AFC76EE239B06D600B5C210 /* DataBase Layer */,
 				2A5EB0F923997CCB006EF59D /* Network Layer */,
@@ -305,6 +315,7 @@
 		2A693F2A239DBCF100F442A9 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				2A5DE53C239DCC0B00F7ACF0 /* BaseUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -637,6 +648,7 @@
 				2AFC76ED239B06B000B5C210 /* Singletons.swift in Sources */,
 				2A5EB119239AA2AD006EF59D /* APIManager.swift in Sources */,
 				2AFC76E9239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift in Sources */,
+				2A5DE53D239DCC0B00F7ACF0 /* BaseUseCase.swift in Sources */,
 				2A5EB0CE23995D4B006EF59D /* AppConfigurator.swift in Sources */,
 				2ACED78D239D25C0006B8312 /* APIVenueModel.swift in Sources */,
 				2A7FDEEE2399408600E2D641 /* AppDelegate.swift in Sources */,
