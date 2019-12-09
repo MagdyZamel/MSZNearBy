@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A5DE53D239DCC0B00F7ACF0 /* BaseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE53C239DCC0B00F7ACF0 /* BaseUseCase.swift */; };
+		2A5DE540239DD81E00F7ACF0 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE53F239DD81E00F7ACF0 /* RepositoryProtocol.swift */; };
 		2A5EB0CE23995D4B006EF59D /* AppConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB0CD23995D4B006EF59D /* AppConfigurator.swift */; };
 		2A5EB0D923995F10006EF59D /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */; };
 		2A5EB0DA23995F10006EF59D /* CocoaDebug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		2A5DE53C239DCC0B00F7ACF0 /* BaseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUseCase.swift; sourceTree = "<group>"; };
+		2A5DE53F239DD81E00F7ACF0 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 		2A5EB0CD23995D4B006EF59D /* AppConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurator.swift; sourceTree = "<group>"; };
 		2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaDebug.framework; sourceTree = "<group>"; };
 		2A5EB0D023995D98006EF59D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		2A5DE53E239DD5B200F7ACF0 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				2A5DE53F239DD81E00F7ACF0 /* RepositoryProtocol.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				2A5EB116239AA220006EF59D /* APIRequestProviderProtocols.swift in Sources */,
 				2AFC76ED239B06B000B5C210 /* Singletons.swift in Sources */,
 				2A5EB119239AA2AD006EF59D /* APIManager.swift in Sources */,
+				2A5DE540239DD81E00F7ACF0 /* RepositoryProtocol.swift in Sources */,
 				2AFC76E9239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift in Sources */,
 				2A5DE53D239DCC0B00F7ACF0 /* BaseUseCase.swift in Sources */,
 				2A5EB0CE23995D4B006EF59D /* AppConfigurator.swift in Sources */,
