@@ -17,7 +17,7 @@ class VenuesRepository: VenuesRepositoryProtocal {
     private var mCashedVenues: [VenueEntity]?
     private var localDataSource: VenuesDataSourceProtocal
     private var remoteDataSource: VenuesDataSourceProtocal
-    private var mCacheIsDirty = true
+    private var mCacheIsDirty = false
 
     init(localDataSource: VenuesDataSourceProtocal,
          remoteDataSource: VenuesDataSourceProtocal) {
