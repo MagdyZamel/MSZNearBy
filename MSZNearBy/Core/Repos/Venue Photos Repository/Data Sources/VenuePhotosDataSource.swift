@@ -11,8 +11,9 @@ import Promises
 
 protocol VenuePhotosDataSource: class {
 
-    func getPhoto(location: LocationCoordinates, venueId: String ) -> Promise<VenuePhotoEntity>
+    func getPhoto(location: LocationCoordinates, venue: VenueEntity ) -> Promise<VenuePhotoEntity>
     @discardableResult
-    func savePhoto(location: LocationCoordinates, venuePhoto: VenuePhotoEntity) ->  Promise<Void>
-
+    func savePhoto(_ venuePhoto: VenuePhotoEntity,
+                   inLocation location: LocationCoordinates,
+                   forVenue venue: VenueEntity)  -> Promise<Void>
 }

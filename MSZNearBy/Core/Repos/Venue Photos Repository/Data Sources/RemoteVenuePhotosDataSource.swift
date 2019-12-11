@@ -19,18 +19,18 @@ class RemoteVenuePhotosDataSource: VenuePhotosDataSource {
         self.providers = providers
     }
 
-    func getPhoto(location: LocationCoordinates, venueId: String) -> Promise<VenuePhotoEntity> {
-        let apiRequest = VenuePhotosAPIRequest(venueId: venueId)
+    func getPhoto(location: LocationCoordinates, venue: VenueEntity) -> Promise<VenuePhotoEntity> {
+        let apiRequest = VenuePhotosAPIRequest(venueId: venue.venueId)
         let promise = Promise<VenuePhotoEntity>.pending()
             network.perform(apiRequest: apiRequest,
                             providerType: providers[0],
                             outputType: APIVenuePhotosResponseModel.self)
             .then({ (response)  in
-                let venuePhoto = response.photos?.items?.map({ VenuePhotoEntity(venuePhoto: $0) }) ?? []
+                let venuePhoto = response.photos?.items?.map({ VenuePhotoEntity(venue: venue, venuePhoto: $0) }) ?? []
                 if let photo = venuePhoto.first {
                     promise.fulfill(photo)
                 }
-                promise.fulfill(VenuePhotoEntity(emptyPhotosWithVenueId: venueId))
+                promise.fulfill(VenuePhotoEntity(venue: venue))
             })
             .catch({
                 promise.reject($0)
@@ -39,7 +39,8 @@ class RemoteVenuePhotosDataSource: VenuePhotosDataSource {
 
     }
     
-    func savePhoto(location: LocationCoordinates, venuePhoto: VenuePhotoEntity) ->  Promise<Void> {
+    func savePhoto(_ venuePhoto: VenuePhotoEntity, inLocation location: LocationCoordinates,
+                   forVenue venue: VenueEntity)  -> Promise<Void> {
         return Promise(NSError(domain: "saveingNotAllowed".localized, code: 121, userInfo: nil))
     }
 

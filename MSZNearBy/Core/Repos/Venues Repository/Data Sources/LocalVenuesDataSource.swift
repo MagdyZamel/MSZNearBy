@@ -18,8 +18,8 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
         self.dataBaseManager = dataBaseManager
     }
     
-    func
-        getVenues(location: LocationCoordinates, radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
+    func getVenues(location: LocationCoordinates,
+                   radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
         let result = Promise<[VenueEntity]>.pending()
         let query: NSFetchRequest = VPLocation.fetchRequest()
         let allLocationPredicate = NSPredicate { ( expexted, _ ) -> Bool in
