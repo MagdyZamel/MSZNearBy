@@ -11,6 +11,4 @@ import Promises
 
 protocol RepositoryProtocol {
     func changeMCacheToDirty()
-    func startFromLocal() -> Promise<Bool>
-    func startFromRemote() -> Promise<Bool>
 }
