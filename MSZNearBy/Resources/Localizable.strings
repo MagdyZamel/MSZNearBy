@@ -1,0 +1,13 @@
+/*
+  Localizable.strings
+  MSZNearBy
+
+  Created by MSZ on 12/9/19.
+  Copyright © 2019 MSZ. All rights reserved.
+*/
+
+/// Errors
+"NoInterneError" = "Your mobile seems to be offline...";
+"APIFailureError" = "Something went wrong. \nplease try again later";
+"saveingNotAllowed" = "Saveing object not allowed for backend side";
+

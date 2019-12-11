@@ -6,7 +6,7 @@
         <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="venueId" attributeType="String"/>
-        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Venue" inverseName="venue" inverseEntity="Venue"/>
+        <relationship name="venuePhoto" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="VenuePhoto" inverseName="venue" inverseEntity="VenuePhoto"/>
     </entity>
     <entity name="VenuePhoto" representedClassName="VenuePhotoEntity" syncable="YES">
         <attribute name="height" attributeType="Decimal" defaultValueString="0.0"/>
@@ -14,11 +14,19 @@
         <attribute name="photoId" optional="YES" attributeType="String"/>
         <attribute name="prefix" attributeType="String"/>
         <attribute name="suffix" attributeType="String"/>
+        <attribute name="venueId" optional="YES" attributeType="String"/>
         <attribute name="width" attributeType="Decimal" defaultValueString="0.0"/>
-        <relationship name="photo" maxCount="1" deletionRule="Cascade" destinationEntity="VenuePhoto" inverseName="photo" inverseEntity="VenuePhoto"/>
+        <relationship name="venue" maxCount="1" deletionRule="Cascade" destinationEntity="Venue" inverseName="venuePhoto" inverseEntity="Venue"/>
+    </entity>
+    <entity name="VPLocation" representedClassName="VPLocation" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VenuePhoto"/>
+        <relationship name="venues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Venue"/>
     </entity>
     <elements>
         <element name="Venue" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="VenuePhoto" positionX="-54" positionY="-9" width="128" height="148"/>
+        <element name="VenuePhoto" positionX="-54" positionY="-9" width="128" height="163"/>
+        <element name="VPLocation" positionX="-54" positionY="45" width="128" height="103"/>
     </elements>
 </model>

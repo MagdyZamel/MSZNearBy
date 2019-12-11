@@ -10,8 +10,7 @@ import Foundation
 import Promises
 import CoreData
 
-class CoreDataStackManager: DataBaseProtocol {
-    
+class CoreDataStackManager: DataBaseManagerProtocol {
     // MARK: - Core Data stack
     let containerName: String
     let persistentContainer: NSPersistentContainer
@@ -21,6 +20,7 @@ class CoreDataStackManager: DataBaseProtocol {
     init(containerName: String) {
         self.containerName = containerName
         persistentContainer = NSPersistentContainer(name: containerName)
+        start()
     }
     
     @discardableResult
@@ -40,8 +40,8 @@ class CoreDataStackManager: DataBaseProtocol {
     }
     
     fileprivate func configureContexts() {
-        backgroundContext = persistentContainer.viewContext
-        viewContext = persistentContainer.newBackgroundContext()
+        backgroundContext = persistentContainer.newBackgroundContext()
+        viewContext = persistentContainer.viewContext
         
         viewContext.automaticallyMergesChangesFromParent = true
         backgroundContext.automaticallyMergesChangesFromParent = true
@@ -49,45 +49,57 @@ class CoreDataStackManager: DataBaseProtocol {
         viewContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
     }
     
-    func fetch<Output: NSObject>(query: NSFetchRequest<Output>) ->  Promise<[Output]> {
+    func fetch<Output, Query>(query: Query, output: Output.Type) -> Promise<[Output]> {
+        
         return retry(on: .promises, attempts: 9, delay: 2, condition: { (_, error) -> Bool in
             return (error as NSError).code  == 10
         }, { () -> Promise<[Output]> in
             if self.backgroundContext == nil {
                 return Promise<[Output]>(NSError.init(domain: "", code: 10, userInfo: nil))
             }
+            guard let query  = query as? NSFetchRequest<NSFetchRequestResult> else {
+                fatalError("CoreDataStackManager Only fetch quaries of type NSFetchRequest")
+            }
             do {
-                let output = try self.backgroundContext.fetch(query)
-                return Promise<[Output]>(output)
+                let fetchedData =  try self.backgroundContext.fetch(query)
+                if let output =  fetchedData as? [Output] {
+                    return Promise<[Output]>(output  )
+                } else {
+                    fatalError("un expected output")
+                }
             } catch {
                 return Promise<[Output]>(error)
             }
         })
     }
     
-    func save() throws {
+    func save() -> Promise<Void> {
+        let promise = Promise<Void>.pending()
         if backgroundContext != nil && backgroundContext.hasChanges {
             do {
                 try backgroundContext.save()
+                promise.fulfill(Void())
             } catch {
-                throw error
-//                fatalError("Unresolved error \(error))")
+                promise.reject(error)
             }
         }
-        
+        return promise
     }
-    func insert<Input>(data: Input) {
-        
-        if let data = data as? NSManagedObject {
-            let managedObject = NSManagedObject(entity: data.entity, insertInto: backgroundContext)
-            for key in managedObject.entity.attributesByName.keys{
-                print(message: key)
-                let value = data.value(forKey: key)
-                
-                managedObject.setValue(value, forKey: key)
-            }
-            try? save()
+    
+    func insert<Input>(data: Input) -> Promise<Void> {
+       
+        var inputs = [NSManagedObject]()
+        if let data = data as? [NSManagedObject] {
+            inputs = data
+        } else if let data = data as? NSManagedObject {
+            inputs.append( data)
+        } else {
+            fatalError("Data must be child NSManagedObject")
         }
+        inputs.forEach { (data) in
+            backgroundContext.insert(data)
+        }
+        return self.save()
     }
     
     func clear() -> Promise<Void> {

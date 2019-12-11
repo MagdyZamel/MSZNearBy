@@ -2,7 +2,7 @@
 //  VenuePhotoEntity+CoreDataProperties.swift
 //  MSZNearBy
 //
-//  Created by MSZ on 12/8/19.
+//  Created by MSZ on 12/11/19.
 //  Copyright © 2019 MSZ. All rights reserved.
 //
 //
@@ -17,12 +17,13 @@ extension VenuePhotoEntity {
         return NSFetchRequest<VenuePhotoEntity>(entityName: "VenuePhoto")
     }
 
-    @NSManaged public var height: NSDecimalNumber?
+    @NSManaged public var height: NSDecimalNumber
     @NSManaged public var image: Data?
-    @NSManaged public var photoId: String?
-    @NSManaged public var prefix: String?
-    @NSManaged public var suffix: String?
-    @NSManaged public var width: NSDecimalNumber?
-    @NSManaged public var photo: VenuePhotoEntity?
+    @NSManaged public var photoId: String
+    @NSManaged public var prefix: String
+    @NSManaged public var suffix: String
+    @NSManaged public var venueId: String
+    @NSManaged public var width: NSDecimalNumber
+    @NSManaged public var venue: VenueEntity
 
 }

@@ -6,15 +6,7 @@ import Foundation
 
 struct APILocationModel: Codable {
 
-	let formattedAddress: [String]?
-
-    enum CodingKeys: String, CodingKey {
-        case formattedAddress
-    }
-    
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		formattedAddress = try values.decodeIfPresent([String].self, forKey: .formattedAddress)
-	}
-
+    let formattedAddress: [String]?
+    let lat: Double?
+    let lng: Double?
 }

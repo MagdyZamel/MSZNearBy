@@ -9,7 +9,6 @@
 import Foundation
 import CoreLocation
 
-
 class LocationManager: NSObject, LocationManagerProtocol {
   
     private let locationManager = CLLocationManager()
@@ -63,7 +62,6 @@ class LocationManager: NSObject, LocationManagerProtocol {
             return false
         }
     }
-
 
     func didChangeAuthorization(status: LocationStatus) {
 
