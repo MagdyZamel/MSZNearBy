@@ -10,6 +10,8 @@ import Foundation
 
 protocol LocationManagerProtocol: class {
     var currentLocation: LocationCoordinates {get}
+    func startUpdatingLocation()
+    func stopUpdatingLocation()
 }
  @objc protocol LocationManagerDelegate: class {
     func userAuthorizedLocation()

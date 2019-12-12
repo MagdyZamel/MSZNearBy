@@ -22,6 +22,7 @@ extension VenueEntity {
     @NSManaged public var long: Double
     @NSManaged public var name: String
     @NSManaged public var venueId: String
-    @NSManaged public var venuePhoto: VenuePhotoEntity?
+    @NSManaged public var vpLocation: VPLocation?
 
+    
 }

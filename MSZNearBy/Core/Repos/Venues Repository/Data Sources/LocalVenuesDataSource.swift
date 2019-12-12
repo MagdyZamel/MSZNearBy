@@ -55,7 +55,6 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
     
     func save(location: LocationCoordinates, venues: [VenueEntity]) -> Promise<Void> {
         let query: NSFetchRequest = VPLocation.fetchRequest()
-        let venuesSet = Set<VenueEntity>.init(venues)
         let result = Promise<Void>.pending()
         let allLocationPredicate = NSPredicate { ( expexted, _ ) -> Bool in
             guard let vpLocation = expexted as? VPLocation else {
@@ -69,7 +68,9 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
             self.dataBaseManager.fetch(query: query, output: VPLocation.self).then { (locations) in
                 let fillterdLocation = locations.filter(allLocationPredicate.evaluate(with:))
                 let vplocations = fillterdLocation.first ?? VPLocation(lat: location.lat, long: location.long)
-                vplocations.addToVenues(venuesSet)
+                venues.forEach { (venue) in
+                    vplocations.addToVenues(venue)
+                }
                 self.dataBaseManager.insert(data: vplocations).then(result.fulfill(_:))
                     .catch(result.reject(_:))
             }.catch(result.reject(_:))

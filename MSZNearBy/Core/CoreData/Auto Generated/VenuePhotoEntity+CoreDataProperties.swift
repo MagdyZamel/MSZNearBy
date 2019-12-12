@@ -24,6 +24,6 @@ extension VenuePhotoEntity {
     @NSManaged public var suffix: String
     @NSManaged public var venueId: String
     @NSManaged public var width: NSDecimalNumber
-    @NSManaged public var venue: VenueEntity
+    @NSManaged public var location: VPLocation?
 
 }

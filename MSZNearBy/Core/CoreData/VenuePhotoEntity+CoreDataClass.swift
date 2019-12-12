@@ -13,19 +13,23 @@ import CoreData
 @objc(VenuePhotoEntity)
 public class VenuePhotoEntity: NSManagedObject {
 
-    convenience init(venue: VenueEntity, venuePhoto: APIPhotoItemModel?) {
+    convenience init( venuePhoto: APIPhotoItemModel?) {
         self.init(entity: VenuePhotoEntity.entity(), insertInto: nil)
         self.height = NSDecimalNumber(value: venuePhoto?.height ?? 0)
         self.width = NSDecimalNumber(value: venuePhoto?.width ?? 0)
         self.photoId = venuePhoto?.photoId ?? ""
         self.prefix = venuePhoto?.prefix ?? ""
         self.suffix = venuePhoto?.suffix ?? ""
-        self.venue = venue
     }
     
-    convenience init(venue: VenueEntity) {
+    convenience init() {
         self.init(entity: VenuePhotoEntity.entity(), insertInto: nil)
-        self.venue = venue
+        self.height = 0
+        self.width = 0
+        self.photoId = ""
+        self.prefix = ""
+        self.suffix = ""
+
     }
 
 }
