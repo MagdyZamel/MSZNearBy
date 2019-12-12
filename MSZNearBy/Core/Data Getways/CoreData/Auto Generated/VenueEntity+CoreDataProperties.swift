@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension VenueEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<VenueEntity> {
@@ -23,6 +22,4 @@ extension VenueEntity {
     @NSManaged public var name: String
     @NSManaged public var venueId: String
     @NSManaged public var vpLocation: VPLocation?
-
-    
 }

@@ -15,10 +15,10 @@ protocol VenueCellPresenterProtocol {
 
 class VenueCellPresenter: VenueCellPresenterProtocol {
     
-    weak var view: VenueCellViewProtocol?
-    var useCase: GetVenuePhotosUseCaseProtocol
+    private weak var view: VenueCellViewProtocol?
+    private var useCase: GetVenuePhotosUseCaseProtocol
    
-    var photo: VenuePhotoEntity!
+    private  var photo: VenuePhotoEntity!
     var venue: VenueEntity!
     var location: LocationCoordinates!
     
@@ -34,8 +34,7 @@ class VenueCellPresenter: VenueCellPresenterProtocol {
     func viewDidAttach() {
         view?.display(address: venue.location )
         view?.display(name: venue.name)
-        useCase.location = location
-        useCase.venueEntity = venue
+        useCase.update(location: location, venueEntity: venue)
         useCase.execute(VenuePhotoEntity.self).then { [weak self] (venuePhoto)  in
             self?.photo = venuePhoto
             self?.view?.display(venueImage: venuePhoto.image)

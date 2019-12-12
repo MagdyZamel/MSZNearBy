@@ -20,16 +20,25 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>App</key>
+	<string></string>
 	<key>ClientId</key>
 	<string>$(CLIENT_ID)</string>
 	<key>ClientSecret</key>
 	<string>$(CLIENT_SECRET)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Nearby app need location access</string>
 	<key>Port</key>
 	<string>$(PORT)</string>
 	<key>TimeoutInterval</key>
 	<string>$(TIMEOUT_INTERVAL)</string>
+	<key>App Transport Security Settings</key>
+	<dict>
+		<key>Allow Arbitrary Loads</key>
+		<string>YES</string>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

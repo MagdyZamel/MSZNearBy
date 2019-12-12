@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension VenuePhotoEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<VenuePhotoEntity> {
