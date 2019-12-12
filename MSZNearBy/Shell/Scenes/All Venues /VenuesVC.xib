@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VenuesVC" customModule="MSZNearBy" customModuleProvider="target">
             <connections>
+                <outlet property="indecator" destination="ufJ-ZE-HuA" id="eIg-3u-d7w"/>
+                <outlet property="realtimeModeButton" destination="nm3-NO-RJx" id="JQX-ay-9ly"/>
+                <outlet property="singleModeButton" destination="uXQ-sa-27s" id="zga-6E-e3r"/>
                 <outlet property="venuesCollectionView" destination="tZ3-tl-9lo" id="YSn-2x-pyB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tZ3-tl-9lo">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                     <color key="backgroundColor" red="0.0" green="0.41960784309999999" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5ip-Ru-1XW">
                         <size key="itemSize" width="50" height="50"/>
@@ -33,16 +36,42 @@
                         <outlet property="dragDelegate" destination="-1" id="YZf-cO-evw"/>
                     </connections>
                 </collectionView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="292-lX-iNe">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <items>
+                        <navigationItem title="NearBy Venues " id="oHc-cR-Rfn">
+                            <barButtonItem key="leftBarButtonItem" title="Single" id="uXQ-sa-27s">
+                                <connections>
+                                    <action selector="singleModeTapped" destination="-1" id="hSh-SQ-t1H"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Realtime" id="nm3-NO-RJx">
+                                <connections>
+                                    <action selector="realtimeModeTapped" destination="-1" id="QZE-kt-dAJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ufJ-ZE-HuA">
+                    <rect key="frame" x="197" y="438" width="20" height="20"/>
+                    <color key="color" red="0.08235294118" green="0.12549019610000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="292-lX-iNe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="45W-8r-c84"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="292-lX-iNe" secondAttribute="trailing" id="AVe-BY-jOZ"/>
+                <constraint firstItem="ufJ-ZE-HuA" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KC0-kk-Crb"/>
+                <constraint firstItem="ufJ-ZE-HuA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LuW-V1-8Wf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tZ3-tl-9lo" secondAttribute="trailing" id="S61-Nd-wdM"/>
+                <constraint firstItem="292-lX-iNe" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="V6w-8e-zqR"/>
                 <constraint firstItem="tZ3-tl-9lo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Z0O-qW-p4O"/>
-                <constraint firstItem="tZ3-tl-9lo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="f95-Xp-biK"/>
+                <constraint firstItem="tZ3-tl-9lo" firstAttribute="top" secondItem="292-lX-iNe" secondAttribute="bottom" id="bsp-kh-zjk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tZ3-tl-9lo" secondAttribute="bottom" id="nwZ-Qi-AG1"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="116"/>
+            <point key="canvasLocation" x="137.68115942028987" y="115.84821428571428"/>
         </view>
     </objects>
 </document>

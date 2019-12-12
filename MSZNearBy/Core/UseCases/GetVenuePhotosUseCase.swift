@@ -11,20 +11,24 @@ import Promises
 import Kingfisher
 
 protocol GetVenuePhotosUseCaseProtocol: BaseUseCaseProtocol {
-    var location: LocationCoordinates! {get set}
-    var venueEntity: VenueEntity! {get set}
+    func update(location: LocationCoordinates, venueEntity: VenueEntity)
 }
 
 class GetVenuePhotosUseCase: BaseUseCase, GetVenuePhotosUseCaseProtocol {
     
-    var venueEntity: VenueEntity!
-    var location: LocationCoordinates!
+    private var venueEntity: VenueEntity!
+    private var location: LocationCoordinates!
     private var photo: VenuePhotoEntity?
     private let venuePhotosRepo: VenuePhotoRepositoryProtocal
      
      init(venuePhotosRepo: VenuePhotoRepositoryProtocal) {
          self.venuePhotosRepo = venuePhotosRepo
      }
+    func update(location: LocationCoordinates, venueEntity: VenueEntity) {
+        self.location = location
+        self.venueEntity = venueEntity
+    }
+
     override func process<T>(_ outputType: T.Type) -> Promise<T> {
         
         if let photo = self.photo as? T, nil == self.photo?.image {

@@ -13,25 +13,26 @@ class LocationManager: NSObject, LocationManagerProtocol {
     
     private let locationManager = CLLocationManager()
     var location = CLLocationCoordinate2D()
-
+    var lastLocationTimestamp = Date()
     weak var delegate: LocationManagerDelegate? {
         didSet {
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.allowsBackgroundLocationUpdates = true
             if CLLocationManager.locationServicesEnabled() {
                 start()
             }
         }
     }
-
-    var currentLocation: LocationCoordinates {
+    func getCurrentLocation() -> LocationCoordinates {
         return LocationCoordinates(lat: location.latitude, long: location.longitude)
+    }
+    func getlastLocationTimestamp() -> Date {
+        return lastLocationTimestamp
     }
 
     func start() {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.startUpdatingLocation()
     }
     func startUpdatingLocation() {
@@ -84,6 +85,7 @@ class LocationManager: NSObject, LocationManagerProtocol {
     func didUpdateLocations(lat: Double, long: Double) {
         self.location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let locationCoordinates = LocationCoordinates(lat: lat, long: long)
+        lastLocationTimestamp = Date()
         delegate?.didUpdateLocations?(location: locationCoordinates)
         print("locations = \(location.latitude) \(location.longitude)")
     }

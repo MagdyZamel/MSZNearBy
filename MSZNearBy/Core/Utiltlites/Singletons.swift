@@ -14,5 +14,6 @@ enum Singletons {
     static let apiManager = APIManager()
     static let coreDataStackManager = CoreDataStackManager(containerName: "NearBYModel")
     static let repositoriesManger = RepositoriesManger()
+    static let locationManager = LocationManager()
     
 }

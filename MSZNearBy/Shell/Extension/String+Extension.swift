@@ -13,3 +13,8 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
 }
+extension NSObject {
+    static var className: String {
+        return String(describing: self)
+    }
+}

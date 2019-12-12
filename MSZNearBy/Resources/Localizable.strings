@@ -11,3 +11,7 @@
 "APIFailureError" = "Something went wrong. \nplease try again later";
 "saveingNotAllowed" = "Saveing object not allowed for backend side";
 
+"realtimeModeButton" = "Realtime";
+"singleModeButton" = "Single";
+"NearByTitle" = "NearBy places";
+"Ok"="Ok";

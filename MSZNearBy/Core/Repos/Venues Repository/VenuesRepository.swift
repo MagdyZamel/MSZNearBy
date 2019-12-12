@@ -14,10 +14,10 @@ protocol VenuesRepositoryProtocal: RepositoryProtocol {
     
 }
 class VenuesRepository: VenuesRepositoryProtocal {
-    private var mCashedVenues: [VenueEntity]?
+    private var mCashedVenues = [String: [VenueEntity]]()
     private var localDataSource: VenuesDataSourceProtocal
     private var remoteDataSource: VenuesDataSourceProtocal
-    private var mCacheIsDirty = false
+    private var mCacheIsDirty = [String: Bool]()
 
     init(localDataSource: VenuesDataSourceProtocal,
          remoteDataSource: VenuesDataSourceProtocal) {
@@ -26,36 +26,40 @@ class VenuesRepository: VenuesRepositoryProtocal {
     }
     
     func getVenues(location: LocationCoordinates, radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
+        let longlat = "\(location.long),\(location.lat)"
+        let mCacheIsDirty = self.mCacheIsDirty[longlat] ?? true
+//        if let cachedVenues = mCashedVenues[longlat], !mCacheIsDirty {
+//            return .init(cachedVenues)
+//        }
         
-        if let mCashedVenues = mCashedVenues, !mCacheIsDirty {
-            return .init(mCashedVenues)
-        }
-        if mCacheIsDirty {
+        if Singletons.internetManager.isInternetConnectionAvailable() {
             return getVenuesFromRemote(location: location, radius: radius, offset: offset, limit: limit)
         }
         return getVenuesFromLocal(location: location, radius: radius, offset: offset, limit: limit)
     }
     
     func changeMCacheToDirty() {
-        mCacheIsDirty = true
-        mCashedVenues = nil
+        mCacheIsDirty.removeAll()
+        mCashedVenues.removeAll()
     }
     
-    private func  refreshMCashedVenues(_ mCashedVenues: [VenueEntity]) {
-        self.mCashedVenues = mCashedVenues
+    private func  refreshMCashedVenues(_ location: LocationCoordinates, mCashedVenues: [VenueEntity]) {
+        let longlat = "\(location.long),\(location.lat)"
+        self.mCashedVenues[longlat] = mCashedVenues
     }
     
     func getVenuesFromLocal(location: LocationCoordinates,
                             radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
+        let longlat = "\(location.long),\(location.lat)"
         let result = Promise<[VenueEntity]>.pending()
         localDataSource.getVenues(location: location, radius: radius, offset: offset, limit: limit
         ).then { [weak self]  venues  in
-            self?.refreshMCashedVenues(venues)
-            self?.mCacheIsDirty = false
+            self?.refreshMCashedVenues(location, mCashedVenues: venues)
+            self?.mCacheIsDirty[longlat] = false
             result.fulfill(venues)
         }.catch { [weak self] (error) in
-            self?.mCacheIsDirty = true
-            self?.mCashedVenues = nil
+            self?.mCacheIsDirty.removeValue(forKey: longlat)
+            self?.mCashedVenues.removeValue(forKey: longlat)
             result.reject(error)
         }
         return result
@@ -63,17 +67,20 @@ class VenuesRepository: VenuesRepositoryProtocal {
     
     func getVenuesFromRemote(location: LocationCoordinates,
                              radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
+        let longlat = "\(location.long),\(location.lat)"
         let result = Promise<[VenueEntity]>.pending()
         remoteDataSource.getVenues(location: location, radius: radius, offset: offset, limit: limit
         ).then { [weak self]  venues  in
-            self?.refreshMCashedVenues(venues)
-            self?.mCacheIsDirty = false
+            
+                self?.refreshMCashedVenues(location, mCashedVenues: venues)
+                self?.mCacheIsDirty[longlat] = false
             self?.localDataSource.save(location: location, venues: venues)
-            result.fulfill(venues)
-        }.catch { [weak self] (error) in
-            self?.mCacheIsDirty = true
-            self?.mCashedVenues = nil
-            result.reject(error)
+
+                result.fulfill(venues)
+            }.catch { [weak self] (error) in
+                self?.mCacheIsDirty.removeValue(forKey: longlat)
+                self?.mCashedVenues.removeValue(forKey: longlat)
+                result.reject(error)
         }
         return result
     }
