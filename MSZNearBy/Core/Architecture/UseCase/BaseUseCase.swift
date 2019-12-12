@@ -9,18 +9,23 @@
 import Foundation
 import Promises
 
-class BaseUseCase {
+protocol BaseUseCaseProtocol {
+    var willProcess: (() -> Void)? {get set}
+    func execute<T>(_ outputType: T.Type) -> Promise<T>
+}
+
+class BaseUseCase: BaseUseCaseProtocol {
     
     // Injected by UseCase consumer (e.g. presenter)
     var willProcess: (() -> Void)?
     
     func extract() {}
     func validate() throws {}
-    func process<T: Codable>(_ outputType: T.Type) -> Promise<T> {
+    func process<T>(_ outputType: T.Type) -> Promise<T> {
         return Promise<T>.init(NSError(domain: "Error", code: 100, userInfo: nil))
     }
     
-    final func execute<T: Codable>(_ outputType: T.Type) -> Promise<T> {
+    final func execute<T>(_ outputType: T.Type) -> Promise<T> {
         do {
             extract()
             try validate()

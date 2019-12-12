@@ -88,5 +88,3 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
         return self.localDataSource.savePhoto(venuePhoto, inLocation: location, forVenue: venue)
     }
 }
-
-

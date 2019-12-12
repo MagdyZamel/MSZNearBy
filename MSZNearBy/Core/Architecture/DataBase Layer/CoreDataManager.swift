@@ -73,7 +73,8 @@ class CoreDataStackManager: DataBaseManagerProtocol {
         })
     }
     
-    func save() -> Promise<Void> {
+    func
+        save() -> Promise<Void> {
         let promise = Promise<Void>.pending()
         if backgroundContext != nil && backgroundContext.hasChanges {
             do {

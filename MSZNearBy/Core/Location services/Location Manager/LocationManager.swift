@@ -10,13 +10,12 @@ import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, LocationManagerProtocol {
-  
+    
     private let locationManager = CLLocationManager()
     var location = CLLocationCoordinate2D()
 
     weak var delegate: LocationManagerDelegate? {
         didSet {
-            self.locationManager.requestAlwaysAuthorization()
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.allowsBackgroundLocationUpdates = true
@@ -35,7 +34,14 @@ class LocationManager: NSObject, LocationManagerProtocol {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
     }
+    func startUpdatingLocation() {
+        locationManager.startUpdatingLocation()
+    }
     
+    func stopUpdatingLocation() {
+        locationManager.stopUpdatingLocation()
+    }
+
     func checkStatus() {
         checkStatus(status: CLLocationManager.authorizationStatus())
     }
