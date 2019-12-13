@@ -18,13 +18,18 @@ class CustomFLowLayout: UICollectionViewFlowLayout {
         if #available(iOS 11.0, *) {
             self.sectionInsetReference = .fromContentInset
         }
-        var availableWidth = collectionView.bounds.inset(by: sectionInset).size.width
-        let minCellWidth = CGFloat(250
-    )
+        let availableSize = collectionView.bounds.inset(by: sectionInset).size
+        var availableWidth = availableSize.width
+        let minCellWidth = CGFloat(250)
         let maxColumn  =  Int(availableWidth/minCellWidth)
         availableWidth -= CGFloat(maxColumn)*minimumLineSpacing
         let itemWidth = (availableWidth/CGFloat(maxColumn)).rounded(.down)
-        self.itemSize = CGSize.init(width: itemWidth, height: itemWidth)
+        
+        if maxColumn == 1 {
+            self.itemSize = CGSize.init(width: itemWidth, height: (availableSize.height/2)-minimumLineSpacing )
+        } else {
+                    self.itemSize = CGSize.init(width: itemWidth, height: itemWidth)
+        }
     }
     
 }

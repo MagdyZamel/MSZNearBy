@@ -169,7 +169,6 @@
 		2A7FDF1523994AB900E2D641 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = SOURCE_ROOT; };
 		2A85D9EC239D38EC0040DCC6 /* NearBYModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearBYModel.xcdatamodel; sourceTree = "<group>"; };
 		2AB9A05C23A2D373003A6BE7 /* Locations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Locations.gpx; sourceTree = "<group>"; };
-		2AB9A05E23A2D388003A6BE7 /* Locations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Locations.gpx; path = "MSZNearBy/Config Files/Debug/Locations.gpx"; sourceTree = "<group>"; };
 		2ACED788239D25BF006B8312 /* APIVenueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIVenueModel.swift; sourceTree = "<group>"; };
 		2ACED789239D25BF006B8312 /* APIItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIItemModel.swift; sourceTree = "<group>"; };
 		2ACED78A239D25BF006B8312 /* APIGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGroupModel.swift; sourceTree = "<group>"; };
@@ -475,7 +474,6 @@
 		2A7FDEE12399408600E2D641 = {
 			isa = PBXGroup;
 			children = (
-				2AB9A05E23A2D388003A6BE7 /* Locations.gpx */,
 				2A7FDEEC2399408600E2D641 /* MSZNearBy */,
 				2A7FDF062399420500E2D641 /* Devs Utilities */,
 				2A7FDF102399487E00E2D641 /* Carthage */,

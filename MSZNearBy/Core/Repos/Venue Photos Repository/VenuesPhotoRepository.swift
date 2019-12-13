@@ -38,7 +38,7 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
         if let photo = mCashedPhotos[venue.venueId], !mCacheIsDirty {
             return .init(photo)
         }
-        if mCacheIsDirty {
+        if Singletons.internetManager.isInternetConnectionAvailable() {
             return getPhotoFromRemote(location: location, venue: venue )
         }
         return getPhotoFromLocal(location: location, venue: venue )
@@ -71,7 +71,7 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
    
     func getPhotoFromRemote(location: LocationCoordinates, venue: VenueEntity ) -> Promise<VenuePhotoEntity> {
         let result = Promise<VenuePhotoEntity>.pending()
-        localDataSource.getPhoto(location: location, venue: venue).then { [weak self]  venuePhoto  in
+        remoteDataSource.getPhoto(location: location, venue: venue).then { [weak self]  venuePhoto  in
             self?.refreshMCashedPhoto(venuePhoto, venue: venue)
             self?.mCacheIsDirty[venue.venueId] = false
             result.fulfill(venuePhoto)

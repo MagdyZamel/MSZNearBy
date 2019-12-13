@@ -26,7 +26,7 @@ class RemoteVenuePhotosDataSource: VenuePhotosDataSource {
                             providerType: providers[0],
                             outputType: APIVenuePhotosResponseModel.self)
             .then({ (response)  in
-                let venuePhoto = response.photos?.items?.map({ VenuePhotoEntity( venuePhoto: $0) }) ?? []
+                let venuePhoto = response.photos?.items?.map({ VenuePhotoEntity(venueId: venue.venueId, venuePhoto: $0) }) ?? []
                 if let photo = venuePhoto.first {
                     promise.fulfill(photo)
                 }
@@ -41,7 +41,7 @@ class RemoteVenuePhotosDataSource: VenuePhotosDataSource {
     
     func savePhoto(_ venuePhoto: VenuePhotoEntity, inLocation location: LocationCoordinates,
                    forVenue venue: VenueEntity)  -> Promise<Void> {
-        return Promise(NSError(domain: "saveingNotAllowed".localized, code: 121, userInfo: nil))
+        return Promise(NSError(domain: "saveingNotAllowed".localized, code: 500, userInfo: nil))
     }
 
 }
