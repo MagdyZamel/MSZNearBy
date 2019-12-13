@@ -34,6 +34,7 @@ class VenueCellPresenter: VenueCellPresenterProtocol {
     func viewDidAttach() {
         view?.display(address: venue.location )
         view?.display(name: venue.name)
+        view?.displayVenueImagePlaceHolder()
         useCase.update(location: location, venueEntity: venue)
         useCase.execute(VenuePhotoEntity.self).then { [weak self] (venuePhoto)  in
             self?.photo = venuePhoto

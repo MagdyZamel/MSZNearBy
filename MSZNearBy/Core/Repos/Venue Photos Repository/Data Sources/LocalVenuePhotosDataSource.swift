@@ -30,17 +30,16 @@ class LocalVenuePhotosDataSource: VenuePhotosDataSource {
                     return distance < Constants.userRadius*2.0
                 }
                 let filterPredicate = NSPredicate { ( expexted, _ ) -> Bool in
-                    guard let venue = expexted as? VenueEntity else {
+                    guard let venuePhoto = expexted as? VenuePhotoEntity else {
                         fatalError()
                     }
-                    let secendLocation = LocationCoordinates(lat: venue.lat, long: venue.long)
-                    let distance = location.distance(from: secendLocation )
-                    return distance <= Constants.userRadius*2.0
+
+                    return venuePhoto.venueId == venue.venueId
                 }
         
                 dataBaseManager.fetch(query: query, output: VPLocation.self).then { (locations) in
                     let fillterdLocation = locations.filter(allLocationPredicate.evaluate(with:))
-                    var photo: VenuePhotoEntity = VenuePhotoEntity()
+                    var photo: VenuePhotoEntity?
                     for vpLocations in fillterdLocation {
                         let photos: [VenuePhotoEntity] =  vpLocations.photos.filter(filterPredicate.evaluate(with:))
                         if photos.count != 0 {
@@ -48,8 +47,12 @@ class LocalVenuePhotosDataSource: VenuePhotosDataSource {
                             break
                         }
                     }
-                    
-                    result.fulfill(photo)
+                    if let photo = photo {
+                        result.fulfill(photo)
+                    } else {
+                        result.reject(NSError(domain: "Not found", code: 404, userInfo: nil))
+                    }
+                       
                 }.catch(result.reject(_:))
         
                 return result

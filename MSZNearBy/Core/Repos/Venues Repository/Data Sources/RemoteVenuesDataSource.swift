@@ -40,6 +40,6 @@ class RemoteVenuesDataSource: VenuesDataSourceProtocal {
     }
     
     func save(location: LocationCoordinates, venues: [VenueEntity]) -> Promise<Void> {
-        return Promise(NSError(domain: "saveingNotAllowed".localized, code: 121, userInfo: nil))
+        return Promise(NSError(domain: "saveingNotAllowed".localized, code: 500, userInfo: nil))
     }
 }

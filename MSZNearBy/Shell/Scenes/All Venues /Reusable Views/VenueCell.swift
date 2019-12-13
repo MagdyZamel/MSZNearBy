@@ -39,7 +39,7 @@ class VenueCell: UICollectionViewCell, VenueCellViewProtocol {
             return
         }
         UIView.transition(with: self.venueImageView,
-                                  duration: 5,
+                          duration: 0.3,
                                   options: .transitionCrossDissolve,
                                   animations: { self.venueImageView.image = image },
                                   completion: nil)

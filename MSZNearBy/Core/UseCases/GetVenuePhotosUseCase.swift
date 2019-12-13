@@ -36,27 +36,38 @@ class GetVenuePhotosUseCase: BaseUseCase, GetVenuePhotosUseCaseProtocol {
         }
         let resultPromise = Promise<T>.pending()
         venuePhotosRepo.getPhoto(location: location, venue: venueEntity).then { (photo)  in
+            self.photo = photo
             if photo.image == nil {
-                let stringURL = "\(photo.suffix)\(photo.width)x\(photo.height)\(photo.prefix)"
+                let stringURL = "\(photo.prefix)\(photo.width)x\(photo.height)\(photo.suffix)"
                 if let url = URL(string: stringURL) {
                     KingfisherManager.shared.retrieveImage(with: url) {[weak self] result in
                         switch result {
                         case .success(let retrieveImageResult):
                             let data = retrieveImageResult.image.pngData()
                             self?.photo?.image = data
-                            if let usecase = self, let photo = usecase.photo,
-                            let output = photo as? T {
+                            if let usecase = self,
+                                let photo = usecase.photo,
+                                let output = photo as? T {
                                 self?.venuePhotosRepo.savePhoto(photo,
                                                                 inLocation: usecase.location,
                                                                 forVenue: usecase.venueEntity)
                                 resultPromise.fulfill(output)
                             } else {
-                                resultPromise.reject(NSError.init(domain: "", code: 121, userInfo: nil))
+                                fatalError("unexpected type")
+                                
                             }
                         case .failure(let error):
                             resultPromise.reject(error)
                         }
                     }
+                } else {
+                    resultPromise.reject(NSError.init(domain: "", code: 121, userInfo: nil))
+                }
+            } else {
+                if let photo = self.photo as? T {
+                    resultPromise.fulfill(photo)
+                } else {
+                    fatalError("unexpected type")
                 }
             }
         }.catch(resultPromise.reject(_:))

@@ -21,7 +21,7 @@ protocol GetVenuesUseCaseDelegate: class {
 }
 
 class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
-
+    
     private let defaultLimit = 0
     
     private var radius: Int
@@ -31,7 +31,7 @@ class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
     var location: LocationCoordinates?
     private var isLocationPermissionAuthorized: Bool = false
     private var lastLocationTimestamp: Date?
-
+    
     private let venuesRepo: VenuesRepositoryProtocal
     private let locationManager: LocationManagerProtocol
     
@@ -86,14 +86,17 @@ class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
                 return Promise<T>.init(NSError.init(domain: "", code: 10, userInfo: nil))
             }
             self?.venuesRepo.getVenues(location: location,
-                                       radius: radius, offset: offset, limit: limit).then { (venues) in
-                if let venues = venues as? T {
-                    resultPromise.fulfill(venues)
-                } else {
-                    fatalError("")
+                                       radius: radius,
+                                       offset: offset,
+                                       limit: limit).then { (venues) in
+                                        self?.lastNumberOfVenues = venues.count
+                                        if let venues = venues as? T {
+                                            resultPromise.fulfill(venues)
+                                        } else {
+                                            fatalError("")
                                         }
             }.catch(resultPromise.reject(_:))
-
+            
             return resultPromise
         })
     }
