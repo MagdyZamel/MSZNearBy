@@ -8,7 +8,6 @@
 
 import Foundation
 import Promises
-import Kingfisher
 
 protocol GetVenuePhotosUseCaseProtocol: BaseUseCaseProtocol {
     func update(location: LocationCoordinates, venueEntity: VenueEntity)
@@ -35,37 +34,12 @@ class GetVenuePhotosUseCase: BaseUseCase, GetVenuePhotosUseCaseProtocol {
             return .init(photo)
         }
         let resultPromise = Promise<T>.pending()
-        venuePhotosRepo.getPhoto(location: location, venue: venueEntity).then { (photo)  in
-            self.photo = photo
-            if photo.image == nil {
-                let stringURL = "\(photo.prefix)\(photo.width)x\(photo.height)\(photo.suffix)"
-                if let url = URL(string: stringURL) {
-                    KingfisherManager.shared.retrieveImage(with: url) {[weak self] result in
-                        switch result {
-                        case .success(let retrieveImageResult):
-                            let data = retrieveImageResult.image.pngData()
-                            self?.photo?.image = data
-                            if let usecase = self,
-                                let photo = usecase.photo,
-                                let output = photo as? T {
-                                self?.venuePhotosRepo.savePhoto(photo,
-                                                                inLocation: usecase.location,
-                                                                forVenue: usecase.venueEntity)
-                                resultPromise.fulfill(output)
-                            } else {
-                                fatalError("unexpected type")
-                                
-                            }
-                        case .failure(let error):
-                            resultPromise.reject(error)
-                        }
-                    }
-                } else {
-                    resultPromise.reject(NSError.init(domain: "", code: 121, userInfo: nil))
-                }
-            } else {
-                if let photo = self.photo as? T {
-                    resultPromise.fulfill(photo)
+        venuePhotosRepo.getPhoto(location: location, venue: venueEntity).then {[weak self] (photo)  in
+            self?.photo = photo
+            if let usecase = self,
+                let photo = usecase.photo {
+                if let output = photo as? T {
+                    resultPromise.fulfill(output)
                 } else {
                     fatalError("unexpected type")
                 }

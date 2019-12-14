@@ -26,7 +26,8 @@ class RemoteVenuePhotosDataSource: VenuePhotosDataSource {
                             providerType: providers[0],
                             outputType: APIVenuePhotosResponseModel.self)
             .then({ (response)  in
-                let venuePhoto = response.photos?.items?.map({ VenuePhotoEntity(venueId: venue.venueId, venuePhoto: $0) }) ?? []
+                let venuePhoto = response.photos?.items?.map({ VenuePhotoEntity(venueId: venue.venueId,
+                                                                                venuePhoto: $0) }) ?? []
                 if let photo = venuePhoto.first {
                     promise.fulfill(photo)
                 }

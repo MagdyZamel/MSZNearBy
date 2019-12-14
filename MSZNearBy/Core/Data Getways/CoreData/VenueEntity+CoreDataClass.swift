@@ -22,3 +22,8 @@ public class VenueEntity: NSManagedObject {
         self.venueId = venue?.venueId ?? ""
     }
 }
+extension VenueEntity {
+    static func == (lhs: VenueEntity, rhs: VenueEntity) -> Bool {
+        return lhs.venueId == rhs.venueId
+    }
+}

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Promises
 enum VenuesReusable {
     case venueCell
 }
@@ -19,7 +19,8 @@ protocol VenuesPresenterProtocol: class {
     func reusubelCellType(at indexpath: IndexPath) -> VenuesReusable
     func cellPreseneter(at indexpath: IndexPath) -> VenueCellPresenterProtocol
     func numberOfItems(inSection section: Int) -> Int 
-    
+    func tryAgainTapped()
+
 }
 
 class VenuesPresenter: VenuesPresenterProtocol {
@@ -44,17 +45,21 @@ class VenuesPresenter: VenuesPresenterProtocol {
         view.showLoader()
         useCase.delegate = self
         useCase.update(offset: lastOffset, limit: limit)
-        
-        useCase.execute([VenueEntity].self).then { venues in
-            self.modifyCellsPresenters(venues: venues,
-                                       atLocation: self.useCase.location ?? LocationCoordinates())
-            
-        }.catch { [weak view](error) in
+        retry(on: .main, attempts: 3, delay: 3, condition: { (_, error) -> Bool in
+            let locationError = error as NSError
+            return locationError.code == 1012
+        }, { () -> Promise<[VenueEntity]> in
+            return self.useCase.execute([VenueEntity].self)
+        }).then { [weak self] venues in
+            self?.modifyCellsPresenters(venues: venues,
+                                        atLocation: self?.useCase.location ?? LocationCoordinates())
+            self?.view?.hideLoader()
+        }.catch { [weak view] (error) in
             view?.showMessage(error.message)
+            view?.showTryAgainView(errorMessage: error.message)
         }.always { [weak view] in
             view?.hideLoader()
         }
-        
     }
     
     func reusubelCellType(at indexpath: IndexPath) -> VenuesReusable {
@@ -82,7 +87,7 @@ class VenuesPresenter: VenuesPresenterProtocol {
         UserMode.changeCurrentMode(mode: .single)
         useCase.update(userMode: .single)
     }
-
+    
     func modifyCellsPresenters( venues: [VenueEntity], atLocation location: LocationCoordinates) {
         for (index, venue) in venues.enumerated() {
             let indexpath = IndexPath(item: index, section: 0)
@@ -98,13 +103,37 @@ class VenuesPresenter: VenuesPresenterProtocol {
     func numberOfItems(inSection section: Int) -> Int {
         return cellsPresenters.count
     }
+    
+    func tryAgainTapped() {
+        view.showLoader()
+        view.hideTryAgainView()
+        useCase.update(offset: lastOffset, limit: limit)
+        retry(on: .main, attempts: 3, delay: 3, condition: { (_, error) -> Bool in
+            let locationError = error as NSError
+            return locationError.code == 1012
+        }, { () -> Promise<[VenueEntity]> in
+            return self.useCase.execute([VenueEntity].self)
+        }).then { [weak self] venues in
+            self?.modifyCellsPresenters(venues: venues,
+                                        atLocation: self?.useCase.location ?? LocationCoordinates())
+            self?.view?.hideLoader()
+        }.catch { [weak view] (error) in
+            view?.showMessage(error.message)
+            view?.showTryAgainView(errorMessage: error.message)
+        }.always { [weak view] in
+            view?.hideLoader()
+        }
+
+    }
+
 }
 
 extension VenuesPresenter: GetVenuesUseCaseDelegate {
     func getVenuesUseCase(foundVenues venues: [VenueEntity], atLocation location: LocationCoordinates) {
         print(venues.count)
+        view.hideTryAgainView()
         cellsPresenters.removeAll()
         modifyCellsPresenters(venues: venues, atLocation: location)
-          view.reloadVenuesData()
+        view.reloadVenuesData()
     }
 }

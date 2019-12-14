@@ -36,7 +36,6 @@ class LocalVenuePhotosDataSource: VenuePhotosDataSource {
 
                     return venuePhoto.venueId == venue.venueId
                 }
-        
                 dataBaseManager.fetch(query: query, output: VPLocation.self).then { (locations) in
                     let fillterdLocation = locations.filter(allLocationPredicate.evaluate(with:))
                     var photo: VenuePhotoEntity?
@@ -79,7 +78,6 @@ class LocalVenuePhotosDataSource: VenuePhotosDataSource {
                             .catch(result.reject(_:))
                     }.catch(result.reject(_:))
                 }.catch(result.reject(_:))
-        
-                return result
+        return result
     }
 }

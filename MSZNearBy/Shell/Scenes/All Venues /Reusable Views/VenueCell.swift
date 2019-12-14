@@ -20,7 +20,7 @@ class VenueCell: UICollectionViewCell, VenueCellViewProtocol {
     @IBOutlet weak var venueImageView: UIImageView!
     @IBOutlet weak var venueNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-
+    
     var presenter: VenueCellPresenterProtocol!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,15 +34,21 @@ class VenueCell: UICollectionViewCell, VenueCellViewProtocol {
     }
     
     func display(venueImage: Data?) {
-        guard let dataImage = venueImage,
-            let image = UIImage(data: dataImage) else {
-            return
-        }
-        UIView.transition(with: self.venueImageView,
-                          duration: 0.3,
+        DispatchQueue.init(label: "ImageViewQueue").async {
+            guard let dataImage = venueImage,
+                let image = UIImage(data: dataImage) else {
+                    return
+            }
+            DispatchQueue.main.async {
+                UIView.transition(with: self.venueImageView,
+                                  duration: 0.3,
                                   options: .transitionCrossDissolve,
-                                  animations: { self.venueImageView.image = image },
+                                  animations: { [weak self] in self?.venueImageView.image = image },
                                   completion: nil)
+            }
+            
+        }
+        
     }
     func displayVenueImagePlaceHolder() {
         self.venueImageView.image = UIImage(named: "PlaceHolder")
