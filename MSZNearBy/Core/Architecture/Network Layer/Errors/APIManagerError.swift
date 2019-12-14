@@ -31,8 +31,10 @@ extension Error {
             return apiError.message
         } else if let apiError = self as? APIRequestProviderError {
             return apiError.reseon
+            
         } else {
-            return self.localizedDescription
+            let error = self as NSError
+             return error.domain
         }
     }
 }

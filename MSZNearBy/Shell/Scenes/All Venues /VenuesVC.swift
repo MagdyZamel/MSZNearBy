@@ -14,27 +14,39 @@ protocol VenuesView: class {
     func showLoader()
     func hideLoader()
     func localizeViews()
+    func hideTryAgainView()
+    func showTryAgainView(errorMessage: String)
 
 }
 
 class VenuesVC: UIViewController, VenuesView {
-
+    
     @IBOutlet weak var venuesCollectionView: UICollectionView!
-    @IBOutlet weak var singleModeButton: UIBarButtonItem!
-    @IBOutlet weak var realtimeModeButton: UIBarButtonItem!
+    @IBOutlet weak var singleModeButton: UIButton!
+    @IBOutlet weak var realtimeModeButton: UIButton!
     @IBOutlet weak var indecator: UIActivityIndicatorView!
-
+    @IBOutlet weak var titlelabel: UILabel!
+    
+    @IBOutlet weak var retryView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
     var presenter: VenuesPresenterProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attach(view: self)
         configCollectionView()
+        
     }
     
     func localizeViews() {
-        realtimeModeButton.title =  "realtimeModeButton".localized
-        singleModeButton.title =  "singleModeButton".localized
-        self.title = "NearByTitle".localized
+        realtimeModeButton.setTitle("realtimeModeButton".localized, for: .normal)
+        singleModeButton.setTitle("singleModeButton".localized, for: .normal)
+        titlelabel.text = "NearByTitle".localized
+        errorLabel.text = "NearByTitle".localized
+        if UserMode.getCurrentMode() == .realtime {
+            realtimeModeTapped()
+        } else {
+            singleModeTapped()
+        }
     }
     
     func reloadVenuesData() {
@@ -62,12 +74,28 @@ class VenuesVC: UIViewController, VenuesView {
         indecator.stopAnimating()
         venuesCollectionView.isHidden = false
     }
+    func hideTryAgainView() {
+        retryView.isHidden = true
+    }
+    func showTryAgainView( errorMessage: String) {
+        errorLabel.text = errorMessage
+        retryView.isHidden = false
+    }
 
     @IBAction func realtimeModeTapped() {
         presenter.realtimeModeTapped()
+        realtimeModeButton.backgroundColor = .green
+        singleModeButton.backgroundColor = .none
+
+    }
+    
+    @IBAction func tryAgainTapped(_ sender: Any) {
+        presenter.tryAgainTapped()
     }
     
     @IBAction func singleModeTapped() {
+        realtimeModeButton.backgroundColor = .none
+        singleModeButton.backgroundColor = .green
         presenter.singleModeTapped()
     }
 }

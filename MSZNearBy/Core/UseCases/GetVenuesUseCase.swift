@@ -48,20 +48,17 @@ class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
         self.locationManager = locationManager
         super.init()
         locationManager.delegate = self
-        
     }
     func update( offset: Int, limit: Int) {
         self.offset = offset
         self.limit = limit
     }
     func update( userMode: UserMode) {
-        if userMode.hashValue != self.userMode.hashValue {
-            self.userMode = userMode
-            if userMode == .realtime {
-                locationManager.startUpdatingLocation()
-            } else {
-                locationManager.stopUpdatingLocation()
-            }
+        self.userMode = userMode
+        if userMode == .realtime {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.stopUpdatingLocation()
         }
     }
     override func extract() {

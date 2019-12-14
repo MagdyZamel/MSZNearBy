@@ -38,10 +38,12 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
         if let photo = mCashedPhotos[venue.venueId], !mCacheIsDirty {
             return .init(photo)
         }
-        if Singletons.internetManager.isInternetConnectionAvailable() {
-            return getPhotoFromRemote(location: location, venue: venue )
+        return getPhotoFromLocal(location: location, venue: venue ).recover { (error)-> Promise<VenuePhotoEntity> in
+            if Singletons.internetManager.isInternetConnectionAvailable() {
+                return self.getPhotoFromRemote(location: location, venue: venue )
+            }
+            return .init(error)
         }
-        return getPhotoFromLocal(location: location, venue: venue )
 
     }
     func changeMCacheToDirty() {
@@ -74,7 +76,22 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
         remoteDataSource.getPhoto(location: location, venue: venue).then { [weak self]  venuePhoto  in
             self?.refreshMCashedPhoto(venuePhoto, venue: venue)
             self?.mCacheIsDirty[venue.venueId] = false
-            result.fulfill(venuePhoto)
+            let stringURL = "\(venuePhoto.prefix)\(venuePhoto.width)x\(venuePhoto.height)\(venuePhoto.suffix)"
+            if let url  = URL(string: stringURL) {
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    guard
+                        let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                        let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                        let data = data, error == nil
+                        else {
+                            result.reject(error ?? NSError(domain: "String", code: 21, userInfo: nil))
+                            return }
+                    venuePhoto.image = data
+                    self?.savePhoto(venuePhoto, inLocation: location, forVenue: venue)
+                    result.fulfill(venuePhoto)
+                }.resume()
+            }
+
         }.catch { [weak self] (error) in
             self?.mCacheIsDirty[venue.venueId] = true
             self?.mCashedPhotos.removeValue(forKey: venue.venueId)
@@ -82,7 +99,7 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
         }
         return result
     }
-    
+    @discardableResult
     func savePhoto(_ venuePhoto: VenuePhotoEntity, inLocation location: LocationCoordinates,
                    forVenue venue: VenueEntity) -> Promise<Void> {
         return self.localDataSource.savePhoto(venuePhoto, inLocation: location, forVenue: venue)

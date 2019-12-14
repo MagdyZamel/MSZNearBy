@@ -18,6 +18,7 @@ class LocationManager: NSObject, LocationManagerProtocol {
         didSet {
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
             if CLLocationManager.locationServicesEnabled() {
                 start()
             }

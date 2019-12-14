@@ -28,15 +28,19 @@ import Foundation
 
 class InternetConnectionManager: InternetManagerProtocol {
     
-    var reachability = try? Reachability()
-    
+    private var reachability = try? Reachability()
+    private var reachable: Bool?
      init() {
-        reachability?.whenReachable = { _ in
+        reachability?.whenReachable = {[weak self ] _ in
+            self?.reachable = true
             print("Reachable")
         }
-        reachability?.whenUnreachable = { _ in
+        
+        reachability?.whenUnreachable = {[weak self ] _ in
+            self?.reachable = false
             print("whenUnreachable")
         }
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reachabilityChanged(note:)),
                                                name: .reachabilityChanged, object: reachability)
@@ -50,9 +54,10 @@ class InternetConnectionManager: InternetManagerProtocol {
     }
     
     func isInternetConnectionAvailable() -> Bool {
-        if reachability?.connection == .unavailable {
-            return false
+        if let reachable = reachable {
+            return reachable
         }
-        return true
+        return reachability?.connection != .unavailable
+
     }
 }

@@ -14,4 +14,5 @@
 "realtimeModeButton" = "Realtime";
 "singleModeButton" = "Single";
 "NearByTitle" = "NearBy places";
+"noCachedVenues" = "you haven't any cached venues\n please go online and try again.";
 "Ok"="Ok";

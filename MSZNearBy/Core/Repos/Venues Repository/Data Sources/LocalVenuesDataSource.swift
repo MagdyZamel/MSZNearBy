@@ -46,6 +46,9 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
                 let venues: [VenueEntity] = vpLocations.venues.filter(filterPredicate.evaluate(with:))
                 allVenues.append(contentsOf: venues)
             }
+            if allVenues.count == 0 {
+                result.reject(NSError(domain: "noCachedVenues".localized, code: 0, userInfo: nil))
+            }
             result.fulfill(allVenues)
         }.catch(result.reject(_:))
         
@@ -64,15 +67,34 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
             let distance = location.distance(from: secendLocation )
             return distance <= Constants.userRadius*2.0
         }
-        self.dataBaseManager.insert(data: venues).then { (_) in
-            self.dataBaseManager.fetch(query: query, output: VPLocation.self).then { (locations) in
+
+        self.dataBaseManager.insert(data: venues).then { [weak self ] (_) in
+            self?.dataBaseManager.fetch(query: query, output: VPLocation.self).then { (locations) in
                 let fillterdLocation = locations.filter(allLocationPredicate.evaluate(with:))
-                let vplocations = fillterdLocation.first ?? VPLocation(lat: location.lat, long: location.long)
-                venues.forEach { (venue) in
-                    vplocations.addToVenues(venue)
+                if let vplocations = fillterdLocation.first {
+                    venues.forEach { (venue) in
+                        
+                        vplocations.addToVenues(venue)
+                        venue.vpLocation = vplocations
+                    }
+                    self?.dataBaseManager.insert(data: vplocations).then(result.fulfill(_:))
+                        .catch(result.reject(_:))
+
+                } else {
+                  let vplocations  = VPLocation(lat: location.lat, long: location.long)
+                    self?.dataBaseManager.insert(data: vplocations).then { () -> Promise<Void> in
+                            venues.forEach { (venue) in
+                            vplocations.addToVenues(venue)
+                            venue.vpLocation = vplocations
+
+                        }
+                        if let usecase = self {
+                            return usecase.dataBaseManager.insert(data: vplocations)
+                        }
+                        return .init(NSError.init(domain: "", code: 12, userInfo: nil))
+                    }
+                    
                 }
-                self.dataBaseManager.insert(data: vplocations).then(result.fulfill(_:))
-                    .catch(result.reject(_:))
             }.catch(result.reject(_:))
         }.catch(result.reject(_:))
         
