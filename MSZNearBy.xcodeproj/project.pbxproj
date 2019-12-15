@@ -70,6 +70,15 @@
 		2ACED79E239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED79B239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift */; };
 		2ACED79F239D2A8D006B8312 /* APIPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED79C239D2A8D006B8312 /* APIPhotosModel.swift */; };
 		2ACED7A0239D2A8D006B8312 /* APIPhotoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACED79D239D2A8D006B8312 /* APIPhotoItemModel.swift */; };
+		2ADF2A1923A5C10700EE75C6 /* ExlporeVenuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF2A1823A5C10700EE75C6 /* ExlporeVenuesTests.swift */; };
+		2ADF2A2023A5C45C00EE75C6 /* GetVenuesError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF2A1F23A5C45C00EE75C6 /* GetVenuesError.swift */; };
+		2ADF2A2223A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF2A2123A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift */; };
+		2ADF2A2523A5C63E00EE75C6 /* VenuesRepositorySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF2A2423A5C63E00EE75C6 /* VenuesRepositorySpy.swift */; };
+		2ADF2A2723A5C68D00EE75C6 /* LocationManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF2A2623A5C68D00EE75C6 /* LocationManagerSpy.swift */; };
+		2ADF2A2923A5C78D00EE75C6 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0D223995D98006EF59D /* Promises.framework */; };
+		2ADF2A2A23A5C78D00EE75C6 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0D323995D98006EF59D /* FBLPromises.framework */; };
+		2ADF2A2B23A5C78D00EE75C6 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */; };
+		2ADF2A2E23A5D8FC00EE75C6 /* ExploreVenuesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ADF2A0E23A5BCF800EE75C6 /* ExploreVenuesResponse.json */; };
 		2AE9220623A11559004A4DBE /* RepositoriesManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220523A11559004A4DBE /* RepositoriesManger.swift */; };
 		2AE9220E23A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220823A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift */; };
 		2AE9221023A1427F004A4DBE /* VPLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220A23A1427F004A4DBE /* VPLocation+CoreDataProperties.swift */; };
@@ -89,6 +98,16 @@
 		2AFC76ED239B06B000B5C210 /* Singletons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76EC239B06B000B5C210 /* Singletons.swift */; };
 		2AFC76F3239BEBD600B5C210 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC76F2239BEBD600B5C210 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2ADF2A1B23A5C10700EE75C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A7FDEE22399408600E2D641 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A7FDEE92399408600E2D641;
+			remoteInfo = MSZNearBy;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2A5EB0DB23995F11006EF59D /* Embed Frameworks */ = {
@@ -169,6 +188,14 @@
 		2ACED79B239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIVenuePhotosResponseModel.swift; sourceTree = "<group>"; };
 		2ACED79C239D2A8D006B8312 /* APIPhotosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPhotosModel.swift; sourceTree = "<group>"; };
 		2ACED79D239D2A8D006B8312 /* APIPhotoItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPhotoItemModel.swift; sourceTree = "<group>"; };
+		2ADF2A0E23A5BCF800EE75C6 /* ExploreVenuesResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExploreVenuesResponse.json; sourceTree = "<group>"; };
+		2ADF2A1623A5C10700EE75C6 /* ExlporeVenuesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExlporeVenuesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ADF2A1823A5C10700EE75C6 /* ExlporeVenuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExlporeVenuesTests.swift; sourceTree = "<group>"; };
+		2ADF2A1A23A5C10700EE75C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2ADF2A1F23A5C45C00EE75C6 /* GetVenuesError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVenuesError.swift; sourceTree = "<group>"; };
+		2ADF2A2123A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIExploreResponseModelMocker.swift; sourceTree = "<group>"; };
+		2ADF2A2423A5C63E00EE75C6 /* VenuesRepositorySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesRepositorySpy.swift; sourceTree = "<group>"; };
+		2ADF2A2623A5C68D00EE75C6 /* LocationManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerSpy.swift; sourceTree = "<group>"; };
 		2AE9220523A11559004A4DBE /* RepositoriesManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesManger.swift; sourceTree = "<group>"; };
 		2AE9220823A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VenuePhotoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2AE9220A23A1427F004A4DBE /* VPLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VPLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -197,6 +224,16 @@
 				2A5EB0E223995F13006EF59D /* Promises.framework in Frameworks */,
 				2A5EB0D923995F10006EF59D /* CocoaDebug.framework in Frameworks */,
 				2A5EB0DC23995F13006EF59D /* FBLPromises.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2ADF2A1323A5C10700EE75C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ADF2A2923A5C78D00EE75C6 /* Promises.framework in Frameworks */,
+				2ADF2A2A23A5C78D00EE75C6 /* FBLPromises.framework in Frameworks */,
+				2ADF2A2B23A5C78D00EE75C6 /* CocoaDebug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +504,9 @@
 				2A7FDEEC2399408600E2D641 /* MSZNearBy */,
 				2A7FDF062399420500E2D641 /* Devs Utilities */,
 				2A7FDF102399487E00E2D641 /* Carthage */,
+				2ADF2A1723A5C10700EE75C6 /* ExlporeVenuesTests */,
 				2A7FDEEB2399408600E2D641 /* Products */,
+				2ADF2A2823A5C78D00EE75C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -475,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				2A7FDEEA2399408600E2D641 /* MSZNearBy.app */,
+				2ADF2A1623A5C10700EE75C6 /* ExlporeVenuesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -570,6 +610,51 @@
 				2A693EF4239DA32C00F442A9 /* VenuePhotoEntity+CoreDataClass.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2ADF2A1023A5BF9C00EE75C6 /* Mocked Data */ = {
+			isa = PBXGroup;
+			children = (
+				2ADF2A0E23A5BCF800EE75C6 /* ExploreVenuesResponse.json */,
+			);
+			path = "Mocked Data";
+			sourceTree = "<group>";
+		};
+		2ADF2A1123A5BFCB00EE75C6 /* Mockers */ = {
+			isa = PBXGroup;
+			children = (
+				2ADF2A2123A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift */,
+			);
+			path = Mockers;
+			sourceTree = "<group>";
+		};
+		2ADF2A1723A5C10700EE75C6 /* ExlporeVenuesTests */ = {
+			isa = PBXGroup;
+			children = (
+				2ADF2A2323A5C5EA00EE75C6 /* spies */,
+				2ADF2A1023A5BF9C00EE75C6 /* Mocked Data */,
+				2ADF2A1123A5BFCB00EE75C6 /* Mockers */,
+				2ADF2A1823A5C10700EE75C6 /* ExlporeVenuesTests.swift */,
+				2ADF2A1F23A5C45C00EE75C6 /* GetVenuesError.swift */,
+				2ADF2A1A23A5C10700EE75C6 /* Info.plist */,
+			);
+			path = ExlporeVenuesTests;
+			sourceTree = "<group>";
+		};
+		2ADF2A2323A5C5EA00EE75C6 /* spies */ = {
+			isa = PBXGroup;
+			children = (
+				2ADF2A2423A5C63E00EE75C6 /* VenuesRepositorySpy.swift */,
+				2ADF2A2623A5C68D00EE75C6 /* LocationManagerSpy.swift */,
+			);
+			path = spies;
+			sourceTree = "<group>";
+		};
+		2ADF2A2823A5C78D00EE75C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2AE9221C23A17BF2004A4DBE /* All Venues  */ = {
@@ -689,6 +774,24 @@
 			productReference = 2A7FDEEA2399408600E2D641 /* MSZNearBy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2ADF2A1523A5C10700EE75C6 /* ExlporeVenuesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2ADF2A1D23A5C10700EE75C6 /* Build configuration list for PBXNativeTarget "ExlporeVenuesTests" */;
+			buildPhases = (
+				2ADF2A1223A5C10700EE75C6 /* Sources */,
+				2ADF2A1323A5C10700EE75C6 /* Frameworks */,
+				2ADF2A1423A5C10700EE75C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2ADF2A1C23A5C10700EE75C6 /* PBXTargetDependency */,
+			);
+			name = ExlporeVenuesTests;
+			productName = ExlporeVenuesTests;
+			productReference = 2ADF2A1623A5C10700EE75C6 /* ExlporeVenuesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -701,6 +804,10 @@
 				TargetAttributes = {
 					2A7FDEE92399408600E2D641 = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					2ADF2A1523A5C10700EE75C6 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 2A7FDEE92399408600E2D641;
 					};
 				};
 			};
@@ -718,6 +825,7 @@
 			projectRoot = "";
 			targets = (
 				2A7FDEE92399408600E2D641 /* MSZNearBy */,
+				2ADF2A1523A5C10700EE75C6 /* ExlporeVenuesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -737,6 +845,14 @@
 				2A5DE54A239E674F00F7ACF0 /* Localizable.strings in Resources */,
 				2A7FDEF72399408800E2D641 /* Assets.xcassets in Resources */,
 				2A7FDF1623994AB900E2D641 /* Cartfile in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2ADF2A1423A5C10700EE75C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ADF2A2E23A5D8FC00EE75C6 /* ExploreVenuesResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,7 +952,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2ADF2A1223A5C10700EE75C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ADF2A2723A5C68D00EE75C6 /* LocationManagerSpy.swift in Sources */,
+				2ADF2A2223A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift in Sources */,
+				2ADF2A2523A5C63E00EE75C6 /* VenuesRepositorySpy.swift in Sources */,
+				2ADF2A1923A5C10700EE75C6 /* ExlporeVenuesTests.swift in Sources */,
+				2ADF2A2023A5C45C00EE75C6 /* GetVenuesError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2ADF2A1C23A5C10700EE75C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A7FDEE92399408600E2D641 /* MSZNearBy */;
+			targetProxy = 2ADF2A1B23A5C10700EE75C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2A7FDEF82399408800E2D641 /* LaunchScreen.storyboard */ = {
@@ -936,6 +1072,30 @@
 			};
 			name = Debug;
 		};
+		2ADF2A1E23A5C10700EE75C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = ExlporeVenuesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MSZ.ExlporeVenuesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSZNearBy.app/MSZNearBy";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -951,6 +1111,14 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2A7FDEFF2399408800E2D641 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2ADF2A1D23A5C10700EE75C6 /* Build configuration list for PBXNativeTarget "ExlporeVenuesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2ADF2A1E23A5C10700EE75C6 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

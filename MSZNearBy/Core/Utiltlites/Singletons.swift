@@ -17,3 +17,5 @@ enum Singletons {
     static let locationManager = LocationManager()
     
 }
+
+
