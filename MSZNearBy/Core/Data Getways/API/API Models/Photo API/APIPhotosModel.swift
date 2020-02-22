@@ -8,5 +8,5 @@ struct APIPhotosModel: Codable {
 
 	let count: Int?
 	let items: [APIPhotoItemModel]?
-    
+
 }

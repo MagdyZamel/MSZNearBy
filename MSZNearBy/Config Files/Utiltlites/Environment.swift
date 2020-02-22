@@ -8,7 +8,7 @@
 
 import Foundation
 public struct Environment {
-    
+
     fileprivate var infoDict: [String: Any] {
             if let dict = Bundle.main.infoDictionary {
                 return dict

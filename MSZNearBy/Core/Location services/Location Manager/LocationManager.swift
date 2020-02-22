@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, LocationManagerProtocol {
-    
+
     private let locationManager = CLLocationManager()
     var location = CLLocationCoordinate2D()
     var lastLocationTimestamp = Date()
@@ -39,7 +39,7 @@ class LocationManager: NSObject, LocationManagerProtocol {
     func startUpdatingLocation() {
         locationManager.startUpdatingLocation()
     }
-    
+
     func stopUpdatingLocation() {
         locationManager.stopUpdatingLocation()
     }

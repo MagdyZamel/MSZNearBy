@@ -15,7 +15,7 @@ public enum PlistKey {
     case port
     case clientId
     case clientSecret
-    
+
     func value() -> String {
         switch self {
         case .baseDomain: return "BaseDomain"

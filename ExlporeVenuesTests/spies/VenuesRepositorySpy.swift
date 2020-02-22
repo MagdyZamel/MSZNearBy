@@ -12,7 +12,7 @@ import Promises
 
 class VenuesRepositorySpy: VenuesRepositoryProtocal {
     var isSucceed = false
-    
+
     func getVenues(location: LocationCoordinates, radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
         let reselt = Promise<[VenueEntity]>.pending()
         if !isSucceed {
@@ -27,7 +27,7 @@ class VenuesRepositorySpy: VenuesRepositoryProtocal {
         }
         return reselt
     }
-    
+
     func changeMCacheToDirty() { }
-    
+
 }

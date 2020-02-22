@@ -9,8 +9,8 @@
 import Foundation
 
 class BaseAPIRequest: APIRequestProtocol {
-    
-    var queryParamss: [String: String]? 
+
+    var queryParamss: [String: String]?
     var scheme: String
     var baseDomain: String
     var portNumber: Int
@@ -19,7 +19,7 @@ class BaseAPIRequest: APIRequestProtocol {
     var method: HTTPMethod
     var queryBody: Any?
     var headers: [String: String]
-    
+
     var queryItems: [URLQueryItem]? {
         return queryParams()?.map({ URLQueryItem.init(name: $0.key, value: $0.value)})
     }
@@ -57,7 +57,7 @@ class BaseAPIRequest: APIRequestProtocol {
         request.httpBody = bodyData
         return request
     }
-    
+
     init() {
         portNumber = Environment().configuration(.port).integerValue
         scheme = "\(Environment().configuration(.urlProtocol))"

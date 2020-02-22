@@ -16,16 +16,16 @@ class CoreDataStackManager: DataBaseManagerProtocol {
     let persistentContainer: NSPersistentContainer
     var viewContext: NSManagedObjectContext!
     var backgroundContext: NSManagedObjectContext!
-    
+
     init(containerName: String) {
         self.containerName = containerName
         persistentContainer = NSPersistentContainer(name: containerName)
         start()
     }
-    
+
     @discardableResult
     func start() -> Promise<Void> {
-        
+
         let promise = Promise<Void>.init { fillfull, reject in
             self.persistentContainer.loadPersistentStores { ( _, error) in
                 if let error = error {
@@ -38,19 +38,19 @@ class CoreDataStackManager: DataBaseManagerProtocol {
         }
         return promise
     }
-    
+
     fileprivate func configureContexts() {
         backgroundContext = persistentContainer.newBackgroundContext()
         viewContext = persistentContainer.viewContext
-        
+
         viewContext.automaticallyMergesChangesFromParent = true
         backgroundContext.automaticallyMergesChangesFromParent = true
         backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         viewContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
     }
-    
+
     func fetch<Output, Query>(query: Query, output: Output.Type) -> Promise<[Output]> {
-        
+
         return retry(on: .promises, attempts: 9, delay: 2, condition: { (_, error) -> Bool in
             return (error as NSError).code  == 10
         }, { () -> Promise<[Output]> in
@@ -72,7 +72,7 @@ class CoreDataStackManager: DataBaseManagerProtocol {
             }
         })
     }
-    
+
     func
         save() -> Promise<Void> {
         let promise = Promise<Void>.pending()
@@ -86,9 +86,9 @@ class CoreDataStackManager: DataBaseManagerProtocol {
         }
         return promise
     }
-    
+
     func insert<Input>(data: Input) -> Promise<Void> {
-       
+
         var inputs = [NSManagedObject]()
         if let data = data as? [NSManagedObject] {
             inputs = data
@@ -102,9 +102,9 @@ class CoreDataStackManager: DataBaseManagerProtocol {
         }
         return self.save()
     }
-    
+
     func clear() -> Promise<Void> {
         return Promise<Void>.init { }
     }
-    
+
 }

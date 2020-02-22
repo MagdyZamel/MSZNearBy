@@ -24,7 +24,7 @@ public class VenuePhotoEntity: NSManagedObject {
         self.venueId = venueId
 
     }
-    
+
     convenience init() {
         self.init(entity: VenuePhotoEntity.entity(), insertInto: nil)
         self.height = 0

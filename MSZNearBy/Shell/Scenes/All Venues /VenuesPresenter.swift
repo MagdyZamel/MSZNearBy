@@ -12,34 +12,32 @@ enum VenuesReusable {
     case venueCell
 }
 protocol VenuesPresenterProtocol: class {
+    var useCase: GetVenuesUseCaseProtocol {get set}
+
     func realtimeModeTapped()
     func singleModeTapped()
     func attach(view: VenuesView)
     func viewDidAttach()
     func reusubelCellType(at indexpath: IndexPath) -> VenuesReusable
     func cellPreseneter(at indexpath: IndexPath) -> VenueCellPresenterProtocol
-    func numberOfItems(inSection section: Int) -> Int 
+    func numberOfItems(inSection section: Int) -> Int
     func tryAgainTapped()
 
 }
 
 class VenuesPresenter: VenuesPresenterProtocol {
-    
+
     var cellsPresenters = [IndexPath: VenueCellPresenterProtocol]()
     weak var view: VenuesView!
-    var useCase: GetVenuesUseCaseProtocol
+    @Injected var useCase: GetVenuesUseCaseProtocol
     var lastOffset = 0
     var limit = 50
-    
-    init(useCase: GetVenuesUseCaseProtocol) {
-        self.useCase = useCase
-    }
-    
+
     func attach(view: VenuesView) {
         self.view = view
         viewDidAttach()
     }
-    
+
     func viewDidAttach() {
         view.localizeViews()
         view.showLoader()
@@ -61,11 +59,11 @@ class VenuesPresenter: VenuesPresenterProtocol {
             view?.hideLoader()
         }
     }
-    
+
     func reusubelCellType(at indexpath: IndexPath) -> VenuesReusable {
         return .venueCell
     }
-    
+
     func cellPreseneter(at indexpath: IndexPath) -> VenueCellPresenterProtocol {
         if let presenter  = self.cellsPresenters[indexpath] {
             return presenter
@@ -79,7 +77,7 @@ class VenuesPresenter: VenuesPresenterProtocol {
         UserMode.changeCurrentMode(mode: .realtime)
         useCase.update(userMode: .realtime)
     }
-    
+
     func singleModeTapped() {
         guard UserMode.getCurrentMode() != .single else {
             return
@@ -87,23 +85,21 @@ class VenuesPresenter: VenuesPresenterProtocol {
         UserMode.changeCurrentMode(mode: .single)
         useCase.update(userMode: .single)
     }
-    
+
     func modifyCellsPresenters( venues: [VenueEntity], atLocation location: LocationCoordinates) {
         for (index, venue) in venues.enumerated() {
             let indexpath = IndexPath(item: index, section: 0)
-            let venuePhotosRepo  = Singletons.repositoriesManger.venuePhotosRepo
-            let usecase = GetVenuePhotosUseCase(venuePhotosRepo: venuePhotosRepo )
-            let presenter = VenueCellPresenter(useCase: usecase)
-            presenter.location = location
-            presenter.venue = venue
+            let args: [Any] = [location, venue]
+            print(args)
+            let presenter: VenueCellPresenterProtocol = Resolver.resolve(args: [location, venue])
             cellsPresenters[indexpath] = presenter
         }
     }
-    
+
     func numberOfItems(inSection section: Int) -> Int {
         return cellsPresenters.count
     }
-    
+
     func tryAgainTapped() {
         view.showLoader()
         view.hideTryAgainView()

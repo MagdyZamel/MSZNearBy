@@ -9,6 +9,6 @@
 import Foundation
 import Promises
 
-protocol RepositoryProtocol {
+protocol RepositoryProtocol: class {
     func changeMCacheToDirty()
 }

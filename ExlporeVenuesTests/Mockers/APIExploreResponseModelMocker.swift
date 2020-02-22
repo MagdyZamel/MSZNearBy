@@ -11,7 +11,7 @@ import Foundation
 import Promises
 
 class APIExploreResponseModelMocker {
-    
+
     static func createFake(fromcontext context: AnyObject) -> APIExploreResponseModel {
         let bundlUrl = Bundle(for: type(of: context))
         let path = bundlUrl.path(forResource: "ExploreVenuesResponse", ofType: "json")

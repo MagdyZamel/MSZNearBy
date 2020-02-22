@@ -10,26 +10,24 @@ import Foundation
 import Promises
 
 protocol GetVenuePhotosUseCaseProtocol: BaseUseCaseProtocol {
+    var venuePhotosRepo: VenuePhotoRepositoryProtocal {get set}
     func update(location: LocationCoordinates, venueEntity: VenueEntity)
 }
 
 class GetVenuePhotosUseCase: BaseUseCase, GetVenuePhotosUseCaseProtocol {
-    
+
     private var venueEntity: VenueEntity!
     private var location: LocationCoordinates!
     private var photo: VenuePhotoEntity?
-    private let venuePhotosRepo: VenuePhotoRepositoryProtocal
-     
-     init(venuePhotosRepo: VenuePhotoRepositoryProtocal) {
-         self.venuePhotosRepo = venuePhotosRepo
-     }
+    @Injected  var venuePhotosRepo: VenuePhotoRepositoryProtocal
+
     func update(location: LocationCoordinates, venueEntity: VenueEntity) {
         self.location = location
         self.venueEntity = venueEntity
     }
 
     override func process<T>(_ outputType: T.Type) -> Promise<T> {
-        
+
         if let photo = self.photo as? T, nil == self.photo?.image {
             return .init(photo)
         }
@@ -46,6 +44,6 @@ class GetVenuePhotosUseCase: BaseUseCase, GetVenuePhotosUseCaseProtocol {
             }
         }.catch(resultPromise.reject(_:))
         return resultPromise
-        
+
     }
 }

@@ -11,12 +11,12 @@ struct APIVenuePhotosResponseModel: Codable {
     enum CodingKeys: String, CodingKey {
         case photos
 	}
-    
+
     enum ParentKeys: String, CodingKey {
         case meta
         case response
     }
-    
+
     init(from decoder: Decoder) throws {
         let container  = try decoder.container(keyedBy: ParentKeys.self)
         let values = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)

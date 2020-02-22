@@ -11,20 +11,18 @@ import Promises
 
 protocol VenuesRepositoryProtocal: RepositoryProtocol {
     func getVenues(location: LocationCoordinates, radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]>
-    
+
 }
 class VenuesRepository: VenuesRepositoryProtocal {
+
     private var mCashedVenues = [String: [VenueEntity]]()
-    private var localDataSource: VenuesDataSourceProtocal
-    private var remoteDataSource: VenuesDataSourceProtocal
+    @Injected(name: Constants.DIQualifers.local)
+    var localDataSource: VenuesDataSourceProtocal
+    @Injected(name: Constants.DIQualifers.remote)
+    var remoteDataSource: VenuesDataSourceProtocal
+
     private var mCacheIsDirty = [String: Bool]()
 
-    init(localDataSource: VenuesDataSourceProtocal,
-         remoteDataSource: VenuesDataSourceProtocal) {
-        self.localDataSource = localDataSource
-        self.remoteDataSource = remoteDataSource
-    }
-    
     func getVenues(location: LocationCoordinates, radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
 //        let longlat = "\(location.long),\(location.lat)"
 //        let mCacheIsDirty = self.mCacheIsDirty[longlat] ?? true
@@ -40,17 +38,17 @@ class VenuesRepository: VenuesRepositoryProtocal {
             return .init(error)
         }
     }
-    
+
     func changeMCacheToDirty() {
         mCacheIsDirty.removeAll()
         mCashedVenues.removeAll()
     }
-    
+
     private func  refreshMCashedVenues(_ location: LocationCoordinates, mCashedVenues: [VenueEntity]) {
         let longlat = "\(location.long),\(location.lat)"
         self.mCashedVenues[longlat] = mCashedVenues
     }
-    
+
     func getVenuesFromLocal(location: LocationCoordinates,
                             radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
         let longlat = "\(location.long),\(location.lat)"
@@ -67,17 +65,17 @@ class VenuesRepository: VenuesRepositoryProtocal {
         }
         return result
     }
-    
+
     func getVenuesFromRemote(location: LocationCoordinates,
                              radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
         let longlat = "\(location.long),\(location.lat)"
         let result = Promise<[VenueEntity]>.pending()
-        
+
         remoteDataSource.getVenues(location: location,
                                    radius: radius,
                                    offset: offset,
                                    limit: limit).then { [weak self]  venues  in
-            
+
                 self?.refreshMCashedVenues(location, mCashedVenues: venues)
                 self?.mCacheIsDirty[longlat] = false
                 self?.localDataSource.save(location: location, venues: venues)

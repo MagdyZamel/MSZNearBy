@@ -10,6 +10,8 @@ import Foundation
 import Promises
 
 protocol GetVenuesUseCaseProtocol: BaseUseCaseProtocol {
+    var venuesRepo: VenuesRepositoryProtocal {get set}
+    var locationManager: LocationManagerProtocol {get set}
     func update( offset: Int, limit: Int)
     func update( userMode: UserMode)
     var delegate: GetVenuesUseCaseDelegate? {get set }
@@ -21,32 +23,29 @@ protocol GetVenuesUseCaseDelegate: class {
 }
 
 class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
-    
+
     private let defaultLimit = 0
-    
-    private var radius: Int
-    private var offset: Int
-    private var limit: Int
-    
+
+    private var radius: Int!
+    private var offset: Int!
+    private var limit: Int!
+
     var location: LocationCoordinates?
     private var isLocationPermissionAuthorized: Bool = false
     private var lastLocationTimestamp: Date?
-    
-    private let venuesRepo: VenuesRepositoryProtocal
-    private let locationManager: LocationManagerProtocol
-    
+
+    @Injected var locationManager: LocationManagerProtocol
+    @Injected var venuesRepo: VenuesRepositoryProtocal
+
     private var userMode = UserMode.getCurrentMode()
-    
+
     weak var delegate: GetVenuesUseCaseDelegate?
     var lastNumberOfVenues = 0
-    init(venuesRepo: VenuesRepositoryProtocal,
-         locationManager: LocationManagerProtocol) {
-        self.venuesRepo = venuesRepo
+    override init() {
+        super.init()
         offset = 0
         radius = Int(Constants.userRadius)
         limit = defaultLimit
-        self.locationManager = locationManager
-        super.init()
         locationManager.delegate = self
     }
     func update( offset: Int, limit: Int) {
@@ -63,19 +62,19 @@ class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
     }
     override func extract() {
         location = locationManager.getCurrentLocation()
-        
+
     }
     override func validate() throws {
         if  !isLocationPermissionAuthorized {
             throw NSError.init(domain: "Turn Location Services and GPS",
                                code: 1012, userInfo: nil)
         }
-        
+
     }
     override func process<T>(_ outputType: T.Type) -> Promise<T> {
-        
+
         let resultPromise = Promise<T>.pending()
-        let (radius, offset, limit) = (self.radius, self.offset, self.limit)
+        let (radius, offset, limit) = (self.radius!, self.offset!, self.limit!)
         return retry(on: .main, attempts: 4, delay: 2, condition: { (_, error) -> Bool in
             return (error as NSError).code  == 10
         }, { [weak self]()  in
@@ -93,7 +92,7 @@ class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
                                             fatalError("")
                                         }
             }.catch(resultPromise.reject(_:))
-            
+
             return resultPromise
         })
     }
@@ -102,10 +101,10 @@ extension GetVenuesUseCase: LocationManagerDelegate {
     func userAuthorizedLocation() {
         self.isLocationPermissionAuthorized = true
     }
-    
+
     func userDeniedLocation() {
         self.isLocationPermissionAuthorized = false
-        
+
     }
     func didUpdateLocations(location: LocationCoordinates) {
         if (self.location!.distance(from: location) > Constants.userRadius/2 && userMode == .realtime) ||
@@ -115,7 +114,7 @@ extension GetVenuesUseCase: LocationManagerDelegate {
                 delegate?.getVenuesUseCase(foundVenues: venueEntity, atLocation: location)
             }
         }
-        
+
     }
-    
+
 }

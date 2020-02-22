@@ -21,10 +21,10 @@ extension VenuesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.numberOfItems(inSection: section)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         switch presenter.reusubelCellType(at: indexPath) {
         case .venueCell:
             guard let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: VenueCell.className,

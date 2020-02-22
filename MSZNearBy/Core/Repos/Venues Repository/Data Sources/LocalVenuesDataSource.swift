@@ -11,13 +11,9 @@ import  Promises
 import CoreData
 
 class LocalVenuesDataSource: VenuesDataSourceProtocal {
-    
-    let dataBaseManager: DataBaseManagerProtocol
-    
-    init(dataBaseManager: DataBaseManagerProtocol) {
-        self.dataBaseManager = dataBaseManager
-    }
-    
+
+    @Injected var dataBaseManager: DataBaseManagerProtocol
+
     func getVenues(location: LocationCoordinates,
                    radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
         let result = Promise<[VenueEntity]>.pending()
@@ -38,7 +34,7 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
             let distance = location.distance(from: secendLocation )
             return distance <= Constants.userRadius*2.0
         }
-        
+
         dataBaseManager.fetch(query: query, output: VPLocation.self).then { (locations) in
             let fillterdLocation = locations.filter(allLocationPredicate.evaluate(with:))
             var allVenues = [VenueEntity]()
@@ -51,11 +47,11 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
             }
             result.fulfill(allVenues)
         }.catch(result.reject(_:))
-        
+
         return result
-        
+
     }
-    
+
     func save(location: LocationCoordinates, venues: [VenueEntity]) -> Promise<Void> {
         let query: NSFetchRequest = VPLocation.fetchRequest()
         let result = Promise<Void>.pending()
@@ -73,7 +69,7 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
                 let fillterdLocation = locations.filter(allLocationPredicate.evaluate(with:))
                 if let vplocations = fillterdLocation.first {
                     venues.forEach { (venue) in
-                        
+
                         vplocations.addToVenues(venue)
                         venue.vpLocation = vplocations
                     }
@@ -93,11 +89,11 @@ class LocalVenuesDataSource: VenuesDataSourceProtocal {
                         }
                         return .init(NSError.init(domain: "", code: 12, userInfo: nil))
                     }
-                    
+
                 }
             }.catch(result.reject(_:))
         }.catch(result.reject(_:))
-        
+
         return result
     }
 }

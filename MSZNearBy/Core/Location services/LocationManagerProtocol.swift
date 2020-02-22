@@ -13,9 +13,9 @@ import Foundation
     func getlastLocationTimestamp() -> Date
     func startUpdatingLocation()
     func stopUpdatingLocation()
-    func checkLocationStatus(status: LocationStatus) -> Bool? 
+    func checkLocationStatus(status: LocationStatus) -> Bool?
     var delegate: LocationManagerDelegate? {get set}
-    
+
 }
  @objc protocol LocationManagerDelegate: class {
     func userAuthorizedLocation()

@@ -9,7 +9,7 @@
 import Foundation
 
 class ExploreVenuesAPIRequest: BaseAPIRequest {
-    
+
     var clientSecret: String
     var clientId: String
     var longLate: String

@@ -10,15 +10,10 @@ import Foundation
 import Promises
 
 class RemoteVenuesDataSource: VenuesDataSourceProtocal {
-    
-    let network: NetworkManagerProtocol
-    let providers: [APIRequestProviderProtocol]
-    
-    init(network: NetworkManagerProtocol, providers: [APIRequestProviderProtocol] ) {
-        self.network = network
-        self.providers = providers
-    }
-    
+
+    @Injected var network: NetworkManagerProtocol
+    var providers: [APIRequestProviderProtocol] = [Resolver.resolve()]
+
     func getVenues(location: LocationCoordinates,
                    radius: Int,
                    offset: Int,
@@ -38,7 +33,7 @@ class RemoteVenuesDataSource: VenuesDataSourceProtocal {
             })
         return promise
     }
-    
+
     func save(location: LocationCoordinates, venues: [VenueEntity]) -> Promise<Void> {
         return Promise(NSError(domain: "saveingNotAllowed".localized, code: 500, userInfo: nil))
     }
