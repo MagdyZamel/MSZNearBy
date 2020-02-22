@@ -11,22 +11,22 @@ import Promises
 @testable import MSZNearBy
 
 class ExlporeVenuesTests: XCTestCase {
-    
+
     var useCase: GetVenuesUseCase!
     var venuesRepositorySpy = VenuesRepositorySpy()
     var locationManagerSpy = LocationManagerSpy()
 
     override func setUp() {
-        
+
         useCase = GetVenuesUseCase(venuesRepo: venuesRepositorySpy, locationManager: locationManagerSpy)
-        
+
     }
     var venuesCount = 0
-    
+
     func test_getVenues_WithSuccessPromise() {
         // Given
         venuesRepositorySpy.isSucceed = true
-        
+
         // When
         locationManagerSpy.neededLocation = .init(lat: 70, long: 60)
         locationManagerSpy.delegate?.userAuthorizedLocation()
@@ -43,7 +43,7 @@ class ExlporeVenuesTests: XCTestCase {
             XCTAssert(false, "No data recived from  the repo")
         }
     }
-    
+
     var userDeniedLocationErrorMessge = ""
     func test_getVenues_locationDenaied_WithFailurePromise() {
         // Given

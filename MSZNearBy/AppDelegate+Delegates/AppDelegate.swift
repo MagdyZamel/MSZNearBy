@@ -21,20 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setIntialVIew()
         return true
     }
-    func setIntialVIew(){
+    func setIntialVIew() {
         window = UIWindow()
-        let venuerepo = Singletons.repositoriesManger.venuesRepo
-        let locationManager = Singletons.locationManager
-        let usecase = GetVenuesUseCase(venuesRepo: venuerepo, locationManager: locationManager)
-        let presenter = VenuesPresenter(useCase: usecase)
-        let venuesVC = VenuesVC()
-        venuesVC.presenter = presenter
+        let venuesVC: VenuesVC = Resolver.resolve()
         self.window?.rootViewController = venuesVC
         self.window?.makeKeyAndVisible()
-        if #available(iOS 13.0, *) {
-            window?.overrideUserInterfaceStyle = .light
-        }
-
     }
 
 }

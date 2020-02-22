@@ -27,7 +27,7 @@ POSSIBILITY OF SUCH DAMAGE.
 import Foundation
 
 class InternetConnectionManager: InternetManagerProtocol {
-    
+
     private var reachability = try? Reachability()
     private var reachable: Bool?
      init() {
@@ -35,24 +35,24 @@ class InternetConnectionManager: InternetManagerProtocol {
             self?.reachable = true
             print("Reachable")
         }
-        
+
         reachability?.whenUnreachable = {[weak self ] _ in
             self?.reachable = false
             print("whenUnreachable")
         }
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reachabilityChanged(note:)),
                                                name: .reachabilityChanged, object: reachability)
         try? reachability?.startNotifier()
     }
-    
+
     @objc func reachabilityChanged(note: Notification) {
         if reachability?.connection != .unavailable {
             print("connection")
         }
     }
-    
+
     func isInternetConnectionAvailable() -> Bool {
         if let reachable = reachable {
             return reachable

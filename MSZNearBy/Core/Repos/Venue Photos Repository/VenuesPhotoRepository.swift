@@ -10,7 +10,6 @@ import Foundation
 import Promises
 
 protocol VenuePhotoRepositoryProtocal: RepositoryProtocol {
-    
     func getPhoto(location: LocationCoordinates, venue: VenueEntity ) -> Promise<VenuePhotoEntity>
     @discardableResult
     func savePhoto( _ venuePhoto: VenuePhotoEntity,
@@ -19,22 +18,18 @@ protocol VenuePhotoRepositoryProtocal: RepositoryProtocol {
 }
 
 class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
-    
+
     private var mCashedPhotos = [String: VenuePhotoEntity]()
     private var mVenues = [String: VenueEntity]()
-    private var localDataSource: VenuePhotosDataSource
-    private var remoteDataSource: VenuePhotosDataSource
+    @Injected(name: Constants.DIQualifers.local)
+    var localDataSource: VenuePhotosDataSource
+    @Injected(name: Constants.DIQualifers.remote)
+    var remoteDataSource: VenuePhotosDataSource
     private var mCacheIsDirty = [String: Bool]()
 
-    init(localDataSource: VenuePhotosDataSource,
-         remoteDataSource: VenuePhotosDataSource) {
-        self.localDataSource = localDataSource
-        self.remoteDataSource = remoteDataSource
-    }
-    
     func getPhoto(location: LocationCoordinates, venue: VenueEntity ) -> Promise<VenuePhotoEntity> {
         let mCacheIsDirty  = self.mCacheIsDirty[venue.venueId] ?? false
-        
+
         if let photo = mCashedPhotos[venue.venueId], !mCacheIsDirty {
             return .init(photo)
         }
@@ -51,12 +46,12 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
         mCashedPhotos.removeAll()
         mVenues.removeAll()
     }
-    
+
     private func refreshMCashedPhoto(_ mCashedPhoto: VenuePhotoEntity, venue: VenueEntity) {
         self.mCashedPhotos[venue.venueId] = mCashedPhoto
         self.mVenues[venue.venueId] = venue
     }
-    
+
     func getPhotoFromLocal(location: LocationCoordinates, venue: VenueEntity ) -> Promise<VenuePhotoEntity> {
         let result = Promise<VenuePhotoEntity>.pending()
         localDataSource.getPhoto(location: location, venue: venue).then { [weak self]  venuePhoto  in
@@ -70,7 +65,7 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
         }
         return result
     }
-   
+
     func getPhotoFromRemote(location: LocationCoordinates, venue: VenueEntity ) -> Promise<VenuePhotoEntity> {
         let result = Promise<VenuePhotoEntity>.pending()
         remoteDataSource.getPhoto(location: location, venue: venue).then { [weak self]  venuePhoto  in

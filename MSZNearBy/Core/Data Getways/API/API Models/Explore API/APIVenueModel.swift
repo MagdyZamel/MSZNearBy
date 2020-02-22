@@ -15,5 +15,5 @@ struct APIVenueModel: Codable {
 		case location
 		case name
 	}
-    
+
 }

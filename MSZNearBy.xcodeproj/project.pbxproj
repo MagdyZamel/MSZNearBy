@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A290A2E2401B084004A8B85 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A262401B084004A8B85 /* Resolver.swift */; };
+		2A290A2F2401B084004A8B85 /* Resolver+ResolverRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A272401B084004A8B85 /* Resolver+ResolverRegistering.swift */; };
+		2A290A302401B084004A8B85 /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2A2401B084004A8B85 /* NetworkContainer.swift */; };
+		2A290A312401B084004A8B85 /* GetVenuePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2B2401B084004A8B85 /* GetVenuePhotos.swift */; };
+		2A290A322401B084004A8B85 /* RepositoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2C2401B084004A8B85 /* RepositoriesContainer.swift */; };
+		2A290A332401B084004A8B85 /* GetVenuesContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2D2401B084004A8B85 /* GetVenuesContainers.swift */; };
 		2A5054BF23A06AF2005D1F5F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5054BE23A06AF2005D1F5F /* Constants.swift */; };
 		2A5054C123A06C71005D1F5F /* LocationCoordinates+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5054C023A06C71005D1F5F /* LocationCoordinates+Extention.swift */; };
 		2A517A7F23A2575D009E268D /* UserMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A517A7E23A2575D009E268D /* UserMode.swift */; };
@@ -33,7 +39,6 @@
 		2A5EB0DD23995F13006EF59D /* FBLPromises.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0D323995D98006EF59D /* FBLPromises.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2A5EB0E223995F13006EF59D /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0D223995D98006EF59D /* Promises.framework */; };
 		2A5EB0E323995F13006EF59D /* Promises.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0D223995D98006EF59D /* Promises.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2A5EB0F02399614C006EF59D /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2A5EB0ED2399614C006EF59D /* Debug.xcconfig */; };
 		2A5EB0F4239961CA006EF59D /* PlistKey .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB0F3239961CA006EF59D /* PlistKey .swift */; };
 		2A5EB0F6239961ED006EF59D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB0F5239961ED006EF59D /* Environment.swift */; };
 		2A5EB0FD23997D77006EF59D /* InternetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB0FC23997D77006EF59D /* InternetManager.swift */; };
@@ -79,7 +84,6 @@
 		2ADF2A2A23A5C78D00EE75C6 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0D323995D98006EF59D /* FBLPromises.framework */; };
 		2ADF2A2B23A5C78D00EE75C6 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */; };
 		2ADF2A2E23A5D8FC00EE75C6 /* ExploreVenuesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ADF2A0E23A5BCF800EE75C6 /* ExploreVenuesResponse.json */; };
-		2AE9220623A11559004A4DBE /* RepositoriesManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220523A11559004A4DBE /* RepositoriesManger.swift */; };
 		2AE9220E23A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220823A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift */; };
 		2AE9221023A1427F004A4DBE /* VPLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220A23A1427F004A4DBE /* VPLocation+CoreDataProperties.swift */; };
 		2AE9221223A1427F004A4DBE /* VenueEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220C23A1427F004A4DBE /* VenueEntity+CoreDataProperties.swift */; };
@@ -112,7 +116,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		2A5EB0DB23995F11006EF59D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
@@ -126,6 +130,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A290A262401B084004A8B85 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		2A290A272401B084004A8B85 /* Resolver+ResolverRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Resolver+ResolverRegistering.swift"; sourceTree = "<group>"; };
+		2A290A2A2401B084004A8B85 /* NetworkContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkContainer.swift; sourceTree = "<group>"; };
+		2A290A2B2401B084004A8B85 /* GetVenuePhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVenuePhotos.swift; sourceTree = "<group>"; };
+		2A290A2C2401B084004A8B85 /* RepositoriesContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesContainer.swift; sourceTree = "<group>"; };
+		2A290A2D2401B084004A8B85 /* GetVenuesContainers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVenuesContainers.swift; sourceTree = "<group>"; };
 		2A5054BE23A06AF2005D1F5F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2A5054C023A06C71005D1F5F /* LocationCoordinates+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationCoordinates+Extention.swift"; sourceTree = "<group>"; };
 		2A517A7E23A2575D009E268D /* UserMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMode.swift; sourceTree = "<group>"; };
@@ -196,7 +206,6 @@
 		2ADF2A2123A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIExploreResponseModelMocker.swift; sourceTree = "<group>"; };
 		2ADF2A2423A5C63E00EE75C6 /* VenuesRepositorySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesRepositorySpy.swift; sourceTree = "<group>"; };
 		2ADF2A2623A5C68D00EE75C6 /* LocationManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerSpy.swift; sourceTree = "<group>"; };
-		2AE9220523A11559004A4DBE /* RepositoriesManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesManger.swift; sourceTree = "<group>"; };
 		2AE9220823A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VenuePhotoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2AE9220A23A1427F004A4DBE /* VPLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VPLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2AE9220C23A1427F004A4DBE /* VenueEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VenueEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -240,6 +249,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A290A252401B084004A8B85 /* Dependency Injection */ = {
+			isa = PBXGroup;
+			children = (
+				2A290A262401B084004A8B85 /* Resolver.swift */,
+				2A290A272401B084004A8B85 /* Resolver+ResolverRegistering.swift */,
+				2A290A282401B084004A8B85 /* Containers */,
+			);
+			path = "Dependency Injection";
+			sourceTree = "<group>";
+		};
+		2A290A282401B084004A8B85 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				2A290A292401B084004A8B85 /* SIngletons */,
+				2A290A2B2401B084004A8B85 /* GetVenuePhotos.swift */,
+				2A290A2C2401B084004A8B85 /* RepositoriesContainer.swift */,
+				2A290A2D2401B084004A8B85 /* GetVenuesContainers.swift */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
+		2A290A292401B084004A8B85 /* SIngletons */ = {
+			isa = PBXGroup;
+			children = (
+				2A290A2A2401B084004A8B85 /* NetworkContainer.swift */,
+			);
+			path = SIngletons;
+			sourceTree = "<group>";
+		};
 		2A517A7D23A256E2009E268D /* Data Getways */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +318,6 @@
 			children = (
 				2A5DE56D239E8C6600F7ACF0 /* Venue Photos Repository */,
 				2A5DE556239E69C400F7ACF0 /* Venues Repository */,
-				2AE9220523A11559004A4DBE /* RepositoriesManger.swift */,
 			);
 			path = Repos;
 			sourceTree = "<group>";
@@ -362,6 +399,7 @@
 		2A5EB0F7239979E6006EF59D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				2A290A252401B084004A8B85 /* Dependency Injection */,
 				2AFC76EB239B06A700B5C210 /* Utiltlites */,
 				2AE9222B23A1C8AD004A4DBE /* UseCases */,
 				2A5DE54B239E68C300F7ACF0 /* Repos */,
@@ -761,8 +799,8 @@
 			buildPhases = (
 				2A7FDEE62399408600E2D641 /* Sources */,
 				2A7FDEE72399408600E2D641 /* Frameworks */,
+				2AE27A3F23FD7320006FA946 /* ShellScript */,
 				2A7FDEE82399408600E2D641 /* Resources */,
-				2A7FDF01239940A100E2D641 /* SwiftLint */,
 				2A5EB0DB23995F11006EF59D /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -799,7 +837,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = MSZ;
 				TargetAttributes = {
 					2A7FDEE92399408600E2D641 = {
@@ -838,7 +876,6 @@
 				2AB9A05D23A2D373003A6BE7 /* Locations.gpx in Resources */,
 				2A7FDF1723994AB900E2D641 /* .swiftlint.yml in Resources */,
 				2A7FDF1823994AB900E2D641 /* Cartfile.resolved in Resources */,
-				2A5EB0F02399614C006EF59D /* Debug.xcconfig in Resources */,
 				2A7FDEFA2399408800E2D641 /* LaunchScreen.storyboard in Resources */,
 				2AE9222523A17D22004A4DBE /* VenueCell.xib in Resources */,
 				2AE9222023A17C20004A4DBE /* VenuesVC.xib in Resources */,
@@ -859,7 +896,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2A7FDF01239940A100E2D641 /* SwiftLint */ = {
+		2AE27A3F23FD7320006FA946 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -868,14 +905,13 @@
 			);
 			inputPaths = (
 			);
-			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\nif which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    swiftlint\nelse\n  echo \"                                                                                \n                                               .%#%%&&%@&%&@@##.                 \n                                             %#%%%%##(%&&&%&%#&#(                \n                                            /#%/,.,,,,**#%&&@@&&@%/              \n                                             @,,..,...,,,/%&&&%#@@@#(*           \n                                              ##(&&&@%#*,,(/,/*@@@@@//*,**...    \n                                               *,,*,,,,*,,//..*@@&&(#// */(*...  \n                                               /#@&(*(**,//((**&%(/&#/*/((*(@&@&%\n                                                 %&&&/%/###%%/##/((&(##(%&&@@&&&%\n                                              ,,,/&%/,#%&&&&#%%(#%#&(&#/##&&%*/((\n                                           ,(**,*,*&&@@&&&%%@@%&&%&@%(%&@@@%/*.,%\n                                          %%* .*#@%%#&@&//@&@%&(. /,#%(&#%@%%* ,,\n                                        ,#((.,  ( #@@@@%%&&&&(. */&%%#&%&#(*(*#@@\n                                         ...*#@&&@@@&%%(&%%#&*.(&&&@&%(,##*&%&@@&\n                                        .@&@@%   (.,(#(((###&/*(&&&&%#/##%/&&&(/(\n                                       %@&&  ... .%%%/((###%@&**@@@@&%*#*#&@@&(*@\n                                      &%&&@ ,....,(##((&#%%%%@%@@&&@@& (&%@%&%,%@\n                                     ,&@@&*.*,,,/**@//#%&#%%@%*(#%..&@@&&&&&((@@&\n                                    &@@&&,(#   .(&%&&%@&&%%&&%&#&%*&@@&@@@%%@@&@&\n                                   &&@@%(#%.    ..,,@&@&&&%&%&&@@@%&@@%*&@@@@@&&&\"\n  echo \"\\n Brace yourself \\nlinter is Coming\\n\"\n  echo \"Error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -907,23 +943,26 @@
 				2A5DE56F239E8C8900F7ACF0 /* VenuePhotosDataSource.swift in Sources */,
 				2AFC76F3239BEBD600B5C210 /* CoreDataManager.swift in Sources */,
 				2A693F3D239DC42F00F442A9 /* LocationManager.swift in Sources */,
+				2A290A312401B084004A8B85 /* GetVenuePhotos.swift in Sources */,
 				2A5DE580239ED4CD00F7ACF0 /* LocalVenuePhotosDataSource.swift in Sources */,
 				2ACED790239D25C0006B8312 /* APIExploreResponseModel.swift in Sources */,
 				2A5EB0F4239961CA006EF59D /* PlistKey .swift in Sources */,
 				2AE9221223A1427F004A4DBE /* VenueEntity+CoreDataProperties.swift in Sources */,
 				2A693F3A239DC35B00F442A9 /* LocationStatus.swift in Sources */,
 				2ACED78F239D25C0006B8312 /* APIGroupModel.swift in Sources */,
+				2A290A2F2401B084004A8B85 /* Resolver+ResolverRegistering.swift in Sources */,
 				2ACED79E239D2A8D006B8312 /* APIVenuePhotosResponseModel.swift in Sources */,
 				2A693F3F239DC5E900F442A9 /* LocationManger + CLLocationManagerDelegate.swift in Sources */,
+				2A290A302401B084004A8B85 /* NetworkContainer.swift in Sources */,
 				2A5EB106239A9DFC006EF59D /* APIRequestProtocol.swift in Sources */,
 				2A5EB113239AA14E006EF59D /* String+Extension.swift in Sources */,
 				2A5DE56C239E8C1D00F7ACF0 /* RemoteVenuesDataSource.swift in Sources */,
 				2AE9222423A17D22004A4DBE /* VenueCell.swift in Sources */,
+				2A290A2E2401B084004A8B85 /* Resolver.swift in Sources */,
 				2A5EB121239AD31C006EF59D /* ErrorModel.swift in Sources */,
 				2A517A8323A26F2A009E268D /* VenuesVC+CollectionView.swift in Sources */,
 				2AFC76E2239AD7F600B5C210 /* InternetManagerProtocol.swift in Sources */,
 				2A517A7F23A2575D009E268D /* UserMode.swift in Sources */,
-				2AE9220623A11559004A4DBE /* RepositoriesManger.swift in Sources */,
 				2A5EB11F239AD303006EF59D /* APIManagerError.swift in Sources */,
 				2A5EB108239A9E32006EF59D /* BaseAPIRequest.swift in Sources */,
 				2A5DE57E239ECB0C00F7ACF0 /* DataBaseManagerProtocol.swift in Sources */,
@@ -933,9 +972,11 @@
 				2AE9220E23A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift in Sources */,
 				2A517A8123A26EDC009E268D /* VenuesPresenter.swift in Sources */,
 				2A5EB0F6239961ED006EF59D /* Environment.swift in Sources */,
+				2A290A322401B084004A8B85 /* RepositoriesContainer.swift in Sources */,
 				2A693F36239DC24100F442A9 /* LocationManagerProtocol.swift in Sources */,
 				2A5EB116239AA220006EF59D /* APIRequestProviderProtocols.swift in Sources */,
 				2A5DE571239E8EB800F7ACF0 /* RemoteVenuePhotosDataSource.swift in Sources */,
+				2A290A332401B084004A8B85 /* GetVenuesContainers.swift in Sources */,
 				2A5DE5A723A035D100F7ACF0 /* VPLocation+CoreDataClass.swift in Sources */,
 				2AFC76ED239B06B000B5C210 /* Singletons.swift in Sources */,
 				2A5EB119239AA2AD006EF59D /* APIManager.swift in Sources */,
@@ -1074,6 +1115,7 @@
 		};
 		2ADF2A1E23A5C10700EE75C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A5EB0ED2399614C006EF59D /* Debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

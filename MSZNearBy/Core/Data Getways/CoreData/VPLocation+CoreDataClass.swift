@@ -22,10 +22,10 @@ public class VPLocation: NSManagedObject {
     convenience init(lat: Double, long: Double, photos: Set<VenuePhotoEntity>) {
         self.init( lat: lat, long: long)
         self.photos = photos
-        self.venues = Set<VenueEntity>.init() 
+        self.venues = Set<VenueEntity>.init()
 
     }
-    
+
     convenience init( lat: Double, long: Double) {
         self.init(entity: VPLocation.entity(), insertInto: nil)
         self.lat = lat

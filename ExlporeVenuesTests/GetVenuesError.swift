@@ -12,5 +12,5 @@ enum GetVenuesError: Error {
     case noVenues
     case locationPermessionNeeded
     case gpsNotWorking
-    
+
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol APIRequestProtocol: AnyObject {
-    
+
     var scheme: String { get }
     var portNumber: Int { get }
     var baseDomain: String { get }
@@ -21,7 +21,7 @@ protocol APIRequestProtocol: AnyObject {
     var authorization: APIAuthorization { get }
     var requestURL: URLRequest { get }
     func queryParams() -> [String: String]?
-    
+
 }
 
 enum HTTPMethod: String {

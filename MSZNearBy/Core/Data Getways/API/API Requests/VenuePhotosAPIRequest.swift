@@ -9,13 +9,13 @@
 import Foundation
 
 class VenuePhotosAPIRequest: BaseAPIRequest {
-    
+
     var clientSecret: String
     var clientId: String
     var stringDate: String
     var venueId: String
     var limit: Int
-    
+
     init(venueId: String) {
         self.clientSecret = "\(Environment().configuration(.clientSecret))"
         self.clientId = "\(Environment().configuration(.clientId))"

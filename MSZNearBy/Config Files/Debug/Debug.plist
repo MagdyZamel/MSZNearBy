@@ -4,6 +4,8 @@
 <dict>
 	<key>BaseDomain</key>
 	<string>$(BASE_DOMAIN)</string>
+	<key>User Interface Style</key>
+	<string>Light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

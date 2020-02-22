@@ -16,15 +16,15 @@ protocol VenueCellViewProtocol: class {
 }
 
 class VenueCell: UICollectionViewCell, VenueCellViewProtocol {
-    
+
     @IBOutlet weak var venueImageView: UIImageView!
     @IBOutlet weak var venueNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
+
     var presenter: VenueCellPresenterProtocol!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
     override func prepareForReuse() {
         presenter.detachView()
@@ -32,7 +32,7 @@ class VenueCell: UICollectionViewCell, VenueCellViewProtocol {
     func cellDidDequeued() {
         presenter.attach(view: self)
     }
-    
+
     func display(venueImage: Data?) {
         DispatchQueue.init(label: "ImageViewQueue").async {
             guard let dataImage = venueImage,
@@ -46,9 +46,9 @@ class VenueCell: UICollectionViewCell, VenueCellViewProtocol {
                                   animations: { [weak self] in self?.venueImageView.image = image },
                                   completion: nil)
             }
-            
+
         }
-        
+
     }
     func displayVenueImagePlaceHolder() {
         self.venueImageView.image = UIImage(named: "PlaceHolder")
@@ -56,9 +56,9 @@ class VenueCell: UICollectionViewCell, VenueCellViewProtocol {
     func display(address: String) {
         addressLabel.text = address
     }
-    
+
     func display(name: String) {
         venueNameLabel.text = name
     }
-    
+
 }

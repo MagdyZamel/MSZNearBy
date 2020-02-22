@@ -19,7 +19,7 @@ struct ErrorModel: Codable {
         self.errorDetail  = errorDetail
         self.errorType = ""
         self.requestId = ""
-        
+
     }
     enum CodingKeys: String, CodingKey {
         case code
@@ -32,7 +32,7 @@ struct ErrorModel: Codable {
         case meta
         case response
     }
-    
+
     init(from decoder: Decoder) throws {
         let container  = try? decoder.container(keyedBy: ParentKeys.self)
         let values = try? container?.nestedContainer(keyedBy: CodingKeys.self, forKey: .meta)
@@ -41,5 +41,5 @@ struct ErrorModel: Codable {
         self.errorType = try values?.decodeIfPresent(String.self, forKey: .errorType)
         self.requestId = try values?.decodeIfPresent(String.self, forKey: .requestId)
     }
-    
+
 }

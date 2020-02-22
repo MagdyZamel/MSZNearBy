@@ -20,23 +20,23 @@ protocol VenuesView: class {
 }
 
 class VenuesVC: UIViewController, VenuesView {
-    
+
     @IBOutlet weak var venuesCollectionView: UICollectionView!
     @IBOutlet weak var singleModeButton: UIButton!
     @IBOutlet weak var realtimeModeButton: UIButton!
     @IBOutlet weak var indecator: UIActivityIndicatorView!
     @IBOutlet weak var titlelabel: UILabel!
-    
+
     @IBOutlet weak var retryView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
-    var presenter: VenuesPresenterProtocol!
+    @Injected var presenter: VenuesPresenterProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attach(view: self)
         configCollectionView()
-        
+
     }
-    
+
     func localizeViews() {
         realtimeModeButton.setTitle("realtimeModeButton".localized, for: .normal)
         singleModeButton.setTitle("singleModeButton".localized, for: .normal)
@@ -48,11 +48,11 @@ class VenuesVC: UIViewController, VenuesView {
             singleModeTapped()
         }
     }
-    
+
     func reloadVenuesData() {
         venuesCollectionView.reloadData()
     }
-    
+
     func showMessage(_ message: String) {
         let alertController = UIAlertController(title: "",
                                                 message: message,
@@ -64,12 +64,12 @@ class VenuesVC: UIViewController, VenuesView {
         self.present(alertController, animated: true, completion: nil)
 
     }
-    
+
     func showLoader() {
         indecator.startAnimating()
         venuesCollectionView.isHidden = true
     }
-    
+
     func hideLoader() {
         indecator.stopAnimating()
         venuesCollectionView.isHidden = false
@@ -88,11 +88,11 @@ class VenuesVC: UIViewController, VenuesView {
         singleModeButton.backgroundColor = .none
 
     }
-    
+
     @IBAction func tryAgainTapped(_ sender: Any) {
         presenter.tryAgainTapped()
     }
-    
+
     @IBAction func singleModeTapped() {
         realtimeModeButton.backgroundColor = .none
         singleModeButton.backgroundColor = .green

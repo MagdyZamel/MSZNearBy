@@ -12,7 +12,7 @@ enum APIManagerError: Error {
     case requestFailed(message: String)
     case errorModel(errorModel: ErrorModel)
     case noInternet(message: String)
-   
+
     var message: String {
         switch self {
         case .requestFailed(let message):
@@ -31,7 +31,7 @@ extension Error {
             return apiError.message
         } else if let apiError = self as? APIRequestProviderError {
             return apiError.reseon
-            
+
         } else {
             let error = self as NSError
              return error.domain

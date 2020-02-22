@@ -9,13 +9,9 @@
 import Foundation
 
 class APIRequestProvider: NSObject, APIRequestProviderProtocol {
-    
-    let internetManager: InternetManagerProtocol
 
-    init(internetManager: InternetManagerProtocol) {
-        self.internetManager = internetManager
-    }
-    
+    @Injected var internetManager: InternetManagerProtocol
+
     func perform(apiRequest: APIRequestProtocol, completion: @escaping APIRequestCompletion) {
         guard internetManager.isInternetConnectionAvailable() else {
             completion(Result<Data, APIRequestProviderError>.failure(.noInternet(message: "NoInterneError".localized)))
@@ -25,7 +21,7 @@ class APIRequestProvider: NSObject, APIRequestProviderProtocol {
     }
 
     private func performRequest( _ request: URLRequest, completion: @escaping APIRequestCompletion) {
-        
+
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
         let dataTask = urlSession.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -33,7 +29,7 @@ class APIRequestProvider: NSObject, APIRequestProviderProtocol {
                 completion(Result<Data, APIRequestProviderError>.failure(failure))
                 return
             }
-            
+
             if let response = response as? HTTPURLResponse {
                 let statusCode = response.statusCode
                 switch statusCode {
@@ -50,5 +46,5 @@ class APIRequestProvider: NSObject, APIRequestProviderProtocol {
     }
 }
 extension APIRequestProvider: URLSessionDelegate {
-    
+
 }

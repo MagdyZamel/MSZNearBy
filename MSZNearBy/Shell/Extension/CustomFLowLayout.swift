@@ -24,12 +24,12 @@ class CustomFLowLayout: UICollectionViewFlowLayout {
         let maxColumn  =  Int(availableWidth/minCellWidth)
         availableWidth -= CGFloat(maxColumn)*minimumLineSpacing
         let itemWidth = (availableWidth/CGFloat(maxColumn)).rounded(.down)
-        
+
         if maxColumn == 1 {
             self.itemSize = CGSize.init(width: itemWidth, height: (availableSize.height/2)-minimumLineSpacing )
         } else {
                     self.itemSize = CGSize.init(width: itemWidth, height: itemWidth)
         }
     }
-    
+
 }

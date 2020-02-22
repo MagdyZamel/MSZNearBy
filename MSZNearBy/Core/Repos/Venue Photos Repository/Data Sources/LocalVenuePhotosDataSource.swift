@@ -11,12 +11,8 @@ import Promises
 import CoreData
 
 class LocalVenuePhotosDataSource: VenuePhotosDataSource {
-    
-    let dataBaseManager: DataBaseManagerProtocol
-    
-    init(dataBaseManager: DataBaseManagerProtocol) {
-        self.dataBaseManager = dataBaseManager
-    }
+
+    @Injected var dataBaseManager: DataBaseManagerProtocol
 
     func getPhoto(location: LocationCoordinates, venue: VenueEntity) -> Promise<VenuePhotoEntity> {
                 let result = Promise<VenuePhotoEntity>.pending()
@@ -51,12 +47,12 @@ class LocalVenuePhotosDataSource: VenuePhotosDataSource {
                     } else {
                         result.reject(NSError(domain: "Not found", code: 404, userInfo: nil))
                     }
-                       
+
                 }.catch(result.reject(_:))
-        
+
                 return result
     }
-    
+
     func savePhoto(_ venuePhoto: VenuePhotoEntity, inLocation location: LocationCoordinates,
                    forVenue venue: VenueEntity)  -> Promise<Void> {
                 let query: NSFetchRequest = VPLocation.fetchRequest()

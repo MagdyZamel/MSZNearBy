@@ -11,4 +11,9 @@ import Foundation
 enum Constants {
     ///Radius in meters
     static let userRadius: Double = 500
+    enum DIQualifers {
+        static let remote = "Remote"
+        static let local = "Local"
+    }
+
 }

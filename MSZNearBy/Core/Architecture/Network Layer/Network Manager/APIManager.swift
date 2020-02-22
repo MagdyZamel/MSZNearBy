@@ -10,7 +10,7 @@ import Foundation
 import Promises
 
 class APIManager: NetworkManagerProtocol {
-    
+
     func perform<T: Codable>(apiRequest: APIRequestProtocol,
                              providerType: APIRequestProviderProtocol,
                              outputType: T.Type) -> Promise<T> {
@@ -34,12 +34,12 @@ class APIManager: NetworkManagerProtocol {
             })
         }
     }
-    
+
     private func validate<T: Codable>(result: Result<Data, APIRequestProviderError>,
                                       outputType: T.Type )-> Result<T, APIManagerError> {
-        
+
         let returnedresult: Result<T, APIManagerError>
-        
+
         switch result {
         case .failure(let error):
             switch error {
@@ -57,7 +57,7 @@ class APIManager: NetworkManagerProtocol {
                 }
             }
         case .success(let data):
-            
+
             if let decoded = try? JSONDecoder().decode(outputType, from: data) {
                 returnedresult = .success(decoded)
             } else if let error =  try? JSONDecoder().decode(ErrorModel.self, from: data) {
@@ -70,5 +70,5 @@ class APIManager: NetworkManagerProtocol {
         }
         return returnedresult
     }
-    
+
 }
