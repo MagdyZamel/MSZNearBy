@@ -12,7 +12,7 @@
 		2A290A302401B084004A8B85 /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2A2401B084004A8B85 /* NetworkContainer.swift */; };
 		2A290A312401B084004A8B85 /* GetVenuePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2B2401B084004A8B85 /* GetVenuePhotos.swift */; };
 		2A290A322401B084004A8B85 /* RepositoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2C2401B084004A8B85 /* RepositoriesContainer.swift */; };
-		2A290A332401B084004A8B85 /* GetVenuesContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A2D2401B084004A8B85 /* GetVenuesContainers.swift */; };
+		2A290A432401B86D004A8B85 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A262401B084004A8B85 /* Resolver.swift */; };
 		2A5054BF23A06AF2005D1F5F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5054BE23A06AF2005D1F5F /* Constants.swift */; };
 		2A5054C123A06C71005D1F5F /* LocationCoordinates+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5054C023A06C71005D1F5F /* LocationCoordinates+Extention.swift */; };
 		2A517A7F23A2575D009E268D /* UserMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A517A7E23A2575D009E268D /* UserMode.swift */; };
@@ -84,6 +84,10 @@
 		2ADF2A2A23A5C78D00EE75C6 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0D323995D98006EF59D /* FBLPromises.framework */; };
 		2ADF2A2B23A5C78D00EE75C6 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5EB0CF23995D98006EF59D /* CocoaDebug.framework */; };
 		2ADF2A2E23A5D8FC00EE75C6 /* ExploreVenuesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ADF2A0E23A5BCF800EE75C6 /* ExploreVenuesResponse.json */; };
+		2AE52D0624027FD100ECA583 /* ResolverRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A290A5D2401DD55004A8B85 /* ResolverRegistering.swift */; };
+		2AE52D072402867000ECA583 /* AppConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EB0CD23995D4B006EF59D /* AppConfigurator.swift */; };
+		2AE52D0A2402D3D500ECA583 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE52D092402D3D500ECA583 /* CoreDataHelpers.swift */; };
+		2AE52D0B2402D3D500ECA583 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE52D092402D3D500ECA583 /* CoreDataHelpers.swift */; };
 		2AE9220E23A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220823A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift */; };
 		2AE9221023A1427F004A4DBE /* VPLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220A23A1427F004A4DBE /* VPLocation+CoreDataProperties.swift */; };
 		2AE9221223A1427F004A4DBE /* VenueEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9220C23A1427F004A4DBE /* VenueEntity+CoreDataProperties.swift */; };
@@ -135,7 +139,8 @@
 		2A290A2A2401B084004A8B85 /* NetworkContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkContainer.swift; sourceTree = "<group>"; };
 		2A290A2B2401B084004A8B85 /* GetVenuePhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVenuePhotos.swift; sourceTree = "<group>"; };
 		2A290A2C2401B084004A8B85 /* RepositoriesContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesContainer.swift; sourceTree = "<group>"; };
-		2A290A2D2401B084004A8B85 /* GetVenuesContainers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVenuesContainers.swift; sourceTree = "<group>"; };
+		2A290A552401D364004A8B85 /* UnitTest.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UnitTest.xcconfig; sourceTree = "<group>"; };
+		2A290A5D2401DD55004A8B85 /* ResolverRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResolverRegistering.swift; sourceTree = "<group>"; };
 		2A5054BE23A06AF2005D1F5F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2A5054C023A06C71005D1F5F /* LocationCoordinates+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationCoordinates+Extention.swift"; sourceTree = "<group>"; };
 		2A517A7E23A2575D009E268D /* UserMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMode.swift; sourceTree = "<group>"; };
@@ -206,6 +211,7 @@
 		2ADF2A2123A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIExploreResponseModelMocker.swift; sourceTree = "<group>"; };
 		2ADF2A2423A5C63E00EE75C6 /* VenuesRepositorySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesRepositorySpy.swift; sourceTree = "<group>"; };
 		2ADF2A2623A5C68D00EE75C6 /* LocationManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerSpy.swift; sourceTree = "<group>"; };
+		2AE52D092402D3D500ECA583 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		2AE9220823A1427F004A4DBE /* VenuePhotoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VenuePhotoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2AE9220A23A1427F004A4DBE /* VPLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VPLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2AE9220C23A1427F004A4DBE /* VenueEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VenueEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -265,7 +271,6 @@
 				2A290A292401B084004A8B85 /* SIngletons */,
 				2A290A2B2401B084004A8B85 /* GetVenuePhotos.swift */,
 				2A290A2C2401B084004A8B85 /* RepositoriesContainer.swift */,
-				2A290A2D2401B084004A8B85 /* GetVenuesContainers.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -276,6 +281,14 @@
 				2A290A2A2401B084004A8B85 /* NetworkContainer.swift */,
 			);
 			path = SIngletons;
+			sourceTree = "<group>";
+		};
+		2A290A5C2401DD55004A8B85 /* Dependency Injection  */ = {
+			isa = PBXGroup;
+			children = (
+				2A290A5D2401DD55004A8B85 /* ResolverRegistering.swift */,
+			);
+			path = "Dependency Injection ";
 			sourceTree = "<group>";
 		};
 		2A517A7D23A256E2009E268D /* Data Getways */ = {
@@ -383,6 +396,7 @@
 		2A5EB0EF2399614C006EF59D /* Release */ = {
 			isa = PBXGroup;
 			children = (
+				2A290A552401D364004A8B85 /* UnitTest.xcconfig */,
 			);
 			path = Release;
 			sourceTree = "<group>";
@@ -669,12 +683,14 @@
 		2ADF2A1723A5C10700EE75C6 /* ExlporeVenuesTests */ = {
 			isa = PBXGroup;
 			children = (
+				2A290A5C2401DD55004A8B85 /* Dependency Injection  */,
 				2ADF2A2323A5C5EA00EE75C6 /* spies */,
 				2ADF2A1023A5BF9C00EE75C6 /* Mocked Data */,
 				2ADF2A1123A5BFCB00EE75C6 /* Mockers */,
 				2ADF2A1823A5C10700EE75C6 /* ExlporeVenuesTests.swift */,
 				2ADF2A1F23A5C45C00EE75C6 /* GetVenuesError.swift */,
 				2ADF2A1A23A5C10700EE75C6 /* Info.plist */,
+				2AE52D092402D3D500ECA583 /* CoreDataHelpers.swift */,
 			);
 			path = ExlporeVenuesTests;
 			sourceTree = "<group>";
@@ -976,11 +992,11 @@
 				2A693F36239DC24100F442A9 /* LocationManagerProtocol.swift in Sources */,
 				2A5EB116239AA220006EF59D /* APIRequestProviderProtocols.swift in Sources */,
 				2A5DE571239E8EB800F7ACF0 /* RemoteVenuePhotosDataSource.swift in Sources */,
-				2A290A332401B084004A8B85 /* GetVenuesContainers.swift in Sources */,
 				2A5DE5A723A035D100F7ACF0 /* VPLocation+CoreDataClass.swift in Sources */,
 				2AFC76ED239B06B000B5C210 /* Singletons.swift in Sources */,
 				2A5EB119239AA2AD006EF59D /* APIManager.swift in Sources */,
 				2A5DE584239EF90600F7ACF0 /* VenuesRepository.swift in Sources */,
+				2AE52D0A2402D3D500ECA583 /* CoreDataHelpers.swift in Sources */,
 				2A5DE540239DD81E00F7ACF0 /* RepositoryProtocol.swift in Sources */,
 				2AE9222F23A1E447004A4DBE /* VenueCellPresenter.swift in Sources */,
 				2AFC76E9239AFC1D00B5C210 /* VenuePhotosAPIRequest.swift in Sources */,
@@ -1000,7 +1016,11 @@
 				2ADF2A2723A5C68D00EE75C6 /* LocationManagerSpy.swift in Sources */,
 				2ADF2A2223A5C5B500EE75C6 /* APIExploreResponseModelMocker.swift in Sources */,
 				2ADF2A2523A5C63E00EE75C6 /* VenuesRepositorySpy.swift in Sources */,
+				2A290A432401B86D004A8B85 /* Resolver.swift in Sources */,
+				2AE52D072402867000ECA583 /* AppConfigurator.swift in Sources */,
 				2ADF2A1923A5C10700EE75C6 /* ExlporeVenuesTests.swift in Sources */,
+				2AE52D0B2402D3D500ECA583 /* CoreDataHelpers.swift in Sources */,
+				2AE52D0624027FD100ECA583 /* ResolverRegistering.swift in Sources */,
 				2ADF2A2023A5C45C00EE75C6 /* GetVenuesError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1027,6 +1047,117 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2A290A582401DB28004A8B85 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A290A552401D364004A8B85 /* UnitTest.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Test;
+		};
+		2A290A592401DB28004A8B85 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A290A552401D364004A8B85 /* UnitTest.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YT8RXZDG8P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "MSZNearBy/Config Files/Debug/Debug.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MSZ.MSZNearBy.;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Test;
+		};
+		2A290A5A2401DB28004A8B85 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A290A552401D364004A8B85 /* UnitTest.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = ExlporeVenuesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MSZ.ExlporeVenuesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSZNearBy.app/MSZNearBy";
+			};
+			name = Test;
+		};
 		2A7FDEFC2399408800E2D641 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A5EB0ED2399614C006EF59D /* Debug.xcconfig */;
@@ -1115,7 +1246,7 @@
 		};
 		2ADF2A1E23A5C10700EE75C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A5EB0ED2399614C006EF59D /* Debug.xcconfig */;
+			baseConfigurationReference = 2A290A552401D364004A8B85 /* UnitTest.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1124,7 +1255,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ExlporeVenuesTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1145,6 +1276,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2A7FDEFC2399408800E2D641 /* Debug */,
+				2A290A582401DB28004A8B85 /* Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1153,6 +1285,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2A7FDEFF2399408800E2D641 /* Debug */,
+				2A290A592401DB28004A8B85 /* Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1161,6 +1294,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2ADF2A1E23A5C10700EE75C6 /* Debug */,
+				2A290A5A2401DB28004A8B85 /* Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -58,15 +58,22 @@ public final class Resolver {
     // MARK: - Defaults
 
     /// Default registry used by the static Registration functions.
-    public static let main: Resolver = Resolver()
+    public static let mock: Resolver = Resolver()
+
+    /// Default registry used by the static Registration functions.
+    public static let main: Resolver = AppConfigurator.isUnitTesting ? mock: Resolver()
     /// Default registry used by the static Resolution functions and by the Resolving protocol.
-    public static var root: Resolver = main
+    public static var root: Resolver = AppConfigurator.isUnitTesting ? mock: main
     /// Default scope applied when registering new objects.
     public static var defaultScope: ResolverScope = Resolver.graph
 
     // MARK: - Lifecycle
-
     public init(parent: Resolver? = nil) {
+
+
+        /// Exchange the implementation of two methods of the same Class
+
+
         self.parent = parent
     }
 

@@ -12,7 +12,11 @@ import CoreData
 
 class LocalVenuePhotosDataSource: VenuePhotosDataSource {
 
-    @Injected var dataBaseManager: DataBaseManagerProtocol
+    private let dataBaseManager: DataBaseManagerProtocol
+
+    init(dataBaseManager: DataBaseManagerProtocol) {
+        self.dataBaseManager = dataBaseManager
+    }
 
     func getPhoto(location: LocationCoordinates, venue: VenueEntity) -> Promise<VenuePhotoEntity> {
                 let result = Promise<VenuePhotoEntity>.pending()

@@ -11,8 +11,13 @@ import Promises
 
 class RemoteVenuePhotosDataSource: VenuePhotosDataSource {
 
-    @Injected var network: NetworkManagerProtocol
-    var providers: [APIRequestProviderProtocol] = [Resolver.resolve()]
+    let network: NetworkManagerProtocol
+    let providers: [APIRequestProviderProtocol]
+
+    init(network: NetworkManagerProtocol, providers: [APIRequestProviderProtocol] ) {
+        self.network = network
+        self.providers = providers
+    }
 
     func getPhoto(location: LocationCoordinates, venue: VenueEntity) -> Promise<VenuePhotoEntity> {
         let apiRequest = VenuePhotosAPIRequest(venueId: venue.venueId)

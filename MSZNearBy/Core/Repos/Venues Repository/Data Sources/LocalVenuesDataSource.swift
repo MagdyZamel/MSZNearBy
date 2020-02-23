@@ -12,7 +12,11 @@ import CoreData
 
 class LocalVenuesDataSource: VenuesDataSourceProtocal {
 
-    @Injected var dataBaseManager: DataBaseManagerProtocol
+    let dataBaseManager: DataBaseManagerProtocol
+
+    init(dataBaseManager: DataBaseManagerProtocol) {
+        self.dataBaseManager = dataBaseManager
+    }
 
     func getVenues(location: LocationCoordinates,
                    radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {

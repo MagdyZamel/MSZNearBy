@@ -21,11 +21,15 @@ class VenuePhotoRepository: VenuePhotoRepositoryProtocal {
 
     private var mCashedPhotos = [String: VenuePhotoEntity]()
     private var mVenues = [String: VenueEntity]()
-    @Injected(name: Constants.DIQualifers.local)
-    var localDataSource: VenuePhotosDataSource
-    @Injected(name: Constants.DIQualifers.remote)
-    var remoteDataSource: VenuePhotosDataSource
+    private var localDataSource: VenuePhotosDataSource
+    private var remoteDataSource: VenuePhotosDataSource
     private var mCacheIsDirty = [String: Bool]()
+
+    init(localDataSource: VenuePhotosDataSource,
+         remoteDataSource: VenuePhotosDataSource) {
+        self.localDataSource = localDataSource
+        self.remoteDataSource = remoteDataSource
+    }
 
     func getPhoto(location: LocationCoordinates, venue: VenueEntity ) -> Promise<VenuePhotoEntity> {
         let mCacheIsDirty  = self.mCacheIsDirty[venue.venueId] ?? false

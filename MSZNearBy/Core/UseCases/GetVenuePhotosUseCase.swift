@@ -10,7 +10,6 @@ import Foundation
 import Promises
 
 protocol GetVenuePhotosUseCaseProtocol: BaseUseCaseProtocol {
-    var venuePhotosRepo: VenuePhotoRepositoryProtocal {get set}
     func update(location: LocationCoordinates, venueEntity: VenueEntity)
 }
 
@@ -19,8 +18,11 @@ class GetVenuePhotosUseCase: BaseUseCase, GetVenuePhotosUseCaseProtocol {
     private var venueEntity: VenueEntity!
     private var location: LocationCoordinates!
     private var photo: VenuePhotoEntity?
-    @Injected  var venuePhotosRepo: VenuePhotoRepositoryProtocal
+    private let venuePhotosRepo: VenuePhotoRepositoryProtocal
 
+     init(venuePhotosRepo: VenuePhotoRepositoryProtocal) {
+         self.venuePhotosRepo = venuePhotosRepo
+     }
     func update(location: LocationCoordinates, venueEntity: VenueEntity) {
         self.location = location
         self.venueEntity = venueEntity

@@ -16,12 +16,15 @@ protocol VenuesRepositoryProtocal: RepositoryProtocol {
 class VenuesRepository: VenuesRepositoryProtocal {
 
     private var mCashedVenues = [String: [VenueEntity]]()
-    @Injected(name: Constants.DIQualifers.local)
-    var localDataSource: VenuesDataSourceProtocal
-    @Injected(name: Constants.DIQualifers.remote)
-    var remoteDataSource: VenuesDataSourceProtocal
-
+    private var localDataSource: VenuesDataSourceProtocal
+    private var remoteDataSource: VenuesDataSourceProtocal
     private var mCacheIsDirty = [String: Bool]()
+
+    init(localDataSource: VenuesDataSourceProtocal,
+         remoteDataSource: VenuesDataSourceProtocal) {
+        self.localDataSource = localDataSource
+        self.remoteDataSource = remoteDataSource
+    }
 
     func getVenues(location: LocationCoordinates, radius: Int, offset: Int, limit: Int) -> Promise<[VenueEntity]> {
 //        let longlat = "\(location.long),\(location.lat)"

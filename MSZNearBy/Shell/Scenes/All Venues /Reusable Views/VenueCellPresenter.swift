@@ -8,7 +8,6 @@
 
 import Foundation
 protocol VenueCellPresenterProtocol {
-    var useCase: GetVenuePhotosUseCaseProtocol {get set}
     func attach(view: VenueCellViewProtocol)
     func viewDidAttach()
     func detachView()
@@ -17,10 +16,15 @@ protocol VenueCellPresenterProtocol {
 class VenueCellPresenter: VenueCellPresenterProtocol {
 
     private weak var view: VenueCellViewProtocol?
-    @Injected var useCase: GetVenuePhotosUseCaseProtocol
+    private var useCase: GetVenuePhotosUseCaseProtocol
+
     private  var photo: VenuePhotoEntity!
     var venue: VenueEntity!
     var location: LocationCoordinates!
+
+    init(useCase: GetVenuePhotosUseCaseProtocol) {
+        self.useCase = useCase
+    }
 
     func attach(view: VenueCellViewProtocol) {
         self.view = view
