@@ -13,7 +13,7 @@ extension Resolver {
             .scope(Resolver.application)
         register { InternetConnectionManager() as InternetManagerProtocol }
             .scope(Resolver.application)
-        register { APIRequestProvider() as APIRequestProviderProtocol }
+        register { APIRequestProvider(internetManager: resolve()) as APIRequestProviderProtocol }
             .scope(Resolver.application)
         register { LocationManager() as LocationManagerProtocol }
             .scope(Resolver.application)

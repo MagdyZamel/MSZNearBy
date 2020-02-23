@@ -10,7 +10,11 @@ import Foundation
 
 class APIRequestProvider: NSObject, APIRequestProviderProtocol {
 
-    @Injected var internetManager: InternetManagerProtocol
+    private let internetManager: InternetManagerProtocol
+
+    init(internetManager: InternetManagerProtocol) {
+        self.internetManager = internetManager
+    }
 
     func perform(apiRequest: APIRequestProtocol, completion: @escaping APIRequestCompletion) {
         guard internetManager.isInternetConnectionAvailable() else {

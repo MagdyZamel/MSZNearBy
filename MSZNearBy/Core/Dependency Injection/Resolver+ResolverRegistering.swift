@@ -11,12 +11,14 @@ import Foundation
 extension Resolver: ResolverRegistering {
 
     public static func registerAllServices() {
-        setupReposNetworkDependencies()
-        setupVenuesRepository()
-        setupVenuePhotosRepository()
-        setupUseCases()
-        setupViewControllers()
-        setupPresenters()
+        if !AppConfigurator.isUnitTesting {
+            setupReposNetworkDependencies()
+            setupVenuesRepository()
+            setupVenuePhotosRepository()
+            setupUseCases()
+            setupViewControllers()
+            setupPresenters()
+        }
 
     }
 }

@@ -34,18 +34,23 @@ class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
     private var isLocationPermissionAuthorized: Bool = false
     private var lastLocationTimestamp: Date?
 
-    @Injected var locationManager: LocationManagerProtocol
-    @Injected var venuesRepo: VenuesRepositoryProtocal
+     var locationManager: LocationManagerProtocol
+     var venuesRepo: VenuesRepositoryProtocal
 
     private var userMode = UserMode.getCurrentMode()
 
     weak var delegate: GetVenuesUseCaseDelegate?
     var lastNumberOfVenues = 0
-    override init() {
-        super.init()
+    init(venuesRepo: VenuesRepositoryProtocal = Resolver.resolve(),
+         locationManager: LocationManagerProtocol) {
+        print(Resolver.main)
+        print(Resolver.root)
+        self.venuesRepo = venuesRepo
         offset = 0
         radius = Int(Constants.userRadius)
         limit = defaultLimit
+        self.locationManager = locationManager
+        super.init()
         locationManager.delegate = self
     }
     func update( offset: Int, limit: Int) {
@@ -66,7 +71,7 @@ class GetVenuesUseCase: BaseUseCase, GetVenuesUseCaseProtocol {
     }
     override func validate() throws {
         if  !isLocationPermissionAuthorized {
-            throw NSError.init(domain: "Turn Location Services and GPS",
+            throw NSError.init(domain: "TurnOnLocation".localized,
                                code: 1012, userInfo: nil)
         }
 

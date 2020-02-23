@@ -29,9 +29,13 @@ class VenuesPresenter: VenuesPresenterProtocol {
 
     var cellsPresenters = [IndexPath: VenueCellPresenterProtocol]()
     weak var view: VenuesView!
-    @Injected var useCase: GetVenuesUseCaseProtocol
+    var useCase: GetVenuesUseCaseProtocol
     var lastOffset = 0
     var limit = 50
+
+    init(useCase: GetVenuesUseCaseProtocol) {
+        self.useCase = useCase
+    }
 
     func attach(view: VenuesView) {
         self.view = view

@@ -12,15 +12,18 @@ import Promises
 
 class ExlporeVenuesTests: XCTestCase {
 
-    var useCase: GetVenuesUseCase!
-    var venuesRepositorySpy = VenuesRepositorySpy()
-    var locationManagerSpy = LocationManagerSpy()
+    @Injected var venuesRepositorySpy: VenuesRepositorySpy
+    @Injected var locationManagerSpy: LocationManagerSpy
+     var useCase: GetVenuesUseCase!
 
     override func setUp() {
 
-        useCase = GetVenuesUseCase(venuesRepo: venuesRepositorySpy, locationManager: locationManagerSpy)
+        let locationManagerSpy = self.locationManagerSpy as LocationManagerProtocol
+        let venuesRepositorySpy = self.venuesRepositorySpy as VenuesRepositoryProtocal
 
+        useCase = GetVenuesUseCase(venuesRepo: venuesRepositorySpy, locationManager: locationManagerSpy)
     }
+
     var venuesCount = 0
 
     func test_getVenues_WithSuccessPromise() {
@@ -33,6 +36,8 @@ class ExlporeVenuesTests: XCTestCase {
         // Then
         useCase.execute([VenueEntity].self).then { (venues )  in
             self.venuesCount = venues.count
+        }.catch { (error) in
+            print(error)
         }
         let pred = NSPredicate(format: "venuesCount != 0")
         let exp = expectation(for: pred, evaluatedWith: self, handler: nil)
@@ -40,7 +45,7 @@ class ExlporeVenuesTests: XCTestCase {
         if res == XCTWaiter.Result.completed {
             XCTAssertEqual(venuesCount, 44, "Data wrong recived from the repo")
         } else {
-            XCTAssert(false, "No data recived from  the repo")
+            XCTAssert(false, "No data recived from the repo")
         }
     }
 
@@ -58,9 +63,9 @@ class ExlporeVenuesTests: XCTestCase {
         let exp = expectation(for: pred, evaluatedWith: self, handler: nil)
         let res = XCTWaiter.wait(for: [exp], timeout: 5.0)
         if res == XCTWaiter.Result.completed {
-            XCTAssertNotEqual(userDeniedLocationErrorMessge, "", "location permision denied but it dosent reflect")
+            XCTAssertEqual(userDeniedLocationErrorMessge, "TurnOnLocation".localized)
         } else {
-            XCTAssert(false, "No data recived from  the repo")
+            XCTAssert(false, userDeniedLocationErrorMessge )
         }
     }
 

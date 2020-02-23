@@ -1,0 +1,12 @@
+//
+//  TEST.xcconfig
+//  ExlporeVenuesTests
+//
+//  Created by MSZ on 2/22/20.
+//  Copyright © 2020 MSZ. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+OTHER_SWIFT_FLAGS = -DTEST

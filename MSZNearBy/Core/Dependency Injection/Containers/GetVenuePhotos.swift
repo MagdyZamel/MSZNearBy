@@ -9,14 +9,14 @@
 import Foundation
 extension Resolver {
     static func setupUseCases() {
-        register { GetVenuePhotosUseCase() as GetVenuePhotosUseCaseProtocol}
-        register { GetVenuesUseCase() as GetVenuesUseCaseProtocol}
+        register { GetVenuePhotosUseCase(venuePhotosRepo: resolve()) as GetVenuePhotosUseCaseProtocol}
+        register { GetVenuesUseCase(venuesRepo: resolve(), locationManager: resolve()) as GetVenuesUseCaseProtocol}
     }
     static func setupPresenters() {
-        register { VenuesPresenter() as VenuesPresenterProtocol}
+        register { VenuesPresenter(useCase: resolve()) as VenuesPresenterProtocol}
         register { (_, args) -> VenueCellPresenterProtocol in
             let args = args as! [Any]
-            let venueCellPresenter =  VenueCellPresenter()
+            let venueCellPresenter =  VenueCellPresenter(useCase: resolve())
             venueCellPresenter.location = args[0] as? LocationCoordinates
             venueCellPresenter.venue = args[1] as? VenueEntity
             return venueCellPresenter

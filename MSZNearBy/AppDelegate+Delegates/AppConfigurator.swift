@@ -14,6 +14,9 @@ import Promises
     import CocoaDebug
 #endif
 class AppConfigurator: NSObject, UIApplicationDelegate {
+
+   static let isUnitTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         #if DEBUG

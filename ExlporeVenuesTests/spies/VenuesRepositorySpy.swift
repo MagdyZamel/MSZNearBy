@@ -20,8 +20,8 @@ class VenuesRepositorySpy: VenuesRepositoryProtocal {
         } else {
             let apiResponse =  APIExploreResponseModelMocker.createFake(fromcontext: self)
             var venues = [VenueEntity]()
-            apiResponse.groups![0].items?.forEach({ (apiItemModel) in
-                venues.append(VenueEntity(venue: apiItemModel.venue))
+            apiResponse.groups![0].items?.forEach({ (_) in
+                venues.append(VenueEntity())
             })
             reselt.fulfill(venues)
         }
